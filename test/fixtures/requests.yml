@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  user_id: one
+  acceptor_id: 1
+  cost: 1.5
+  description: MyText
+  status: MyText
+  delivery_arrangement: MyText
+
+two:
+  user_id: two
+  acceptor_id: 1
+  cost: 1.5
+  description: MyText
+  status: MyText
+  delivery_arrangement: MyText
