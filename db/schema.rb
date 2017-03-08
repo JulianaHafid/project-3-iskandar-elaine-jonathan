@@ -10,7 +10,10 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170307075300) do
+ActiveRecord::Schema.define(version: 20170307075523) do
+
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
 
   create_table "events", force: :cascade do |t|
     t.integer  "user_id"
@@ -19,7 +22,7 @@ ActiveRecord::Schema.define(version: 20170307075300) do
     t.date     "date"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["user_id"], name: "index_events_on_user_id"
+    t.index ["user_id"], name: "index_events_on_user_id", using: :btree
   end
 
   create_table "requests", force: :cascade do |t|
@@ -32,8 +35,8 @@ ActiveRecord::Schema.define(version: 20170307075300) do
     t.text     "delivery_arrangement"
     t.datetime "created_at",           null: false
     t.datetime "updated_at",           null: false
-    t.index ["event_id"], name: "index_requests_on_event_id"
-    t.index ["user_id"], name: "index_requests_on_user_id"
+    t.index ["event_id"], name: "index_requests_on_event_id", using: :btree
+    t.index ["user_id"], name: "index_requests_on_user_id", using: :btree
   end
 
   create_table "users", force: :cascade do |t|
@@ -52,8 +55,11 @@ ActiveRecord::Schema.define(version: 20170307075300) do
     t.string   "last_sign_in_ip"
     t.datetime "created_at",                             null: false
     t.datetime "updated_at",                             null: false
-    t.index ["email"], name: "index_users_on_email", unique: true
-    t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
+    t.index ["email"], name: "index_users_on_email", unique: true, using: :btree
+    t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
   end
 
+  add_foreign_key "events", "users"
+  add_foreign_key "requests", "events"
+  add_foreign_key "requests", "users"
 end
