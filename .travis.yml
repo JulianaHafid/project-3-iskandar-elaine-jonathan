@@ -2,7 +2,7 @@ language: ruby
 rvm:
 - ruby-head
 before_script:
-- rails db:create
+- bundle exec rake db:create
 deploy:
   provider: heroku
   app: standin-app
