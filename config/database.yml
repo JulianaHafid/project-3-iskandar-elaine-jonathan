@@ -21,6 +21,4 @@ test:
   database: db/test.sqlite3
 
 production:
-  adapter:
-  database: 
-  url:
+  adapter: postgresql
