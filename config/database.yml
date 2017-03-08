@@ -22,3 +22,5 @@ test:
 
 production:
   adapter: postgresql
+  database: d5rb8gianrpl1c
+  url: <%= ENV['HEROKU_POSTGRESQL_GREEN_URL'] %>
