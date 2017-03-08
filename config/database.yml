@@ -20,7 +20,7 @@ development:
 # Do not set this db to the same as development or production.
 test:
   <<: *default
-  # database: project-3-iskandar-elaine-jonathan_test
+  database: project-3-iskandar-elaine-jonathan_test
 
 production:
   adapter: postgresql
