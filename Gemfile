@@ -9,6 +9,7 @@ end
 gem 'carrierwave'
 gem 'pry'
 gem 'devise'
+gem 'stripe'
 # =============================================================
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
