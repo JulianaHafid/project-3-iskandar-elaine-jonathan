@@ -16,10 +16,12 @@ class ChargesController < ApplicationController
       :customer    => customer.id,
       :amount      => @amount,
       :description => 'StandIn request service fee',
-      :currency    => 'sgd'
+      :currency    => 'usd'
     )
 
     rescue Stripe::CardError => e
     flash[:error] = e.message
     redirect_to new_charge_path
+  end
+
 end
