@@ -1,0 +1,33 @@
+<h1><%=@event.name%></h1>
+
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @event.name %>
+</p>
+
+<p>
+<%= image_tag (@event.image_url) %>
+</p>
+
+<p>
+  <strong>Location:</strong>
+  <%= @event.location %>
+</p>
+
+<p>
+  <strong>Date:</strong>
+  <%= @event.date %>
+</p>
+
+<p>
+  <strong>time:</strong>
+  <%= @event.time %>
+</p>
+
+<%if current_user%>
+<%= link_to 'Edit', edit_event_path(@event) %> |
+<%= link_to 'Back', events_path %> |
+<%= link_to 'Destroy', @event, method: :delete, data: { confirm: 'Are you sure?' } %>
+<%end%>
