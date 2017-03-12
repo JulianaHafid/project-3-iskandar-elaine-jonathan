@@ -15,6 +15,12 @@
   <strong>Location:</strong>
   <%= @event.location %>
 </p>
+<p>
+  <iframe class="user-map"
+frameborder="0" style="border:0"
+src="https://www.google.com/maps/embed/v1/place?key=AIzaSyCsfwe3COwAH6Ju4CA_d2IOE79qN3g6lTM&q=<%=@event.location%>" allowfullscreen>
+</iframe>
+</p>
 
 <p>
   <strong>Date:</strong>
