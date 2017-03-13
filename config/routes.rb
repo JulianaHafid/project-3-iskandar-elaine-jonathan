@@ -10,5 +10,7 @@ Rails.application.routes.draw do
 
   get 'static/homepage' => 'static#homepage'
 
+  resources :charges
+
   root 'static#homepage'
 end
