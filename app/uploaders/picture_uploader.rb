@@ -4,6 +4,16 @@ class PictureUploader < CarrierWave::Uploader::Base
   # include CarrierWave::RMagick
   # include CarrierWave::MiniMagick
 
+  version :standard do
+    process :eager => true
+    process :resize_to_fit => [400, 600]
+  end
+
+  version :thumbnail do
+    eager
+    resize_to_fit(200, 300)
+  end
+
   # Choose what kind of storage to use for this uploader:
   # storage :file
   # storage :fog
