@@ -1,0 +1,39 @@
+<h1><%=@event.name%></h1>
+
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @event.name %>
+</p>
+
+<p>
+<%= image_tag (@event.image_url) %>
+</p>
+
+<p>
+  <strong>Location:</strong>
+  <%= @event.location %>
+</p>
+<p>
+  <iframe class="user-map"
+frameborder="0" style="border:0"
+src="https://www.google.com/maps/embed/v1/place?key=AIzaSyCsfwe3COwAH6Ju4CA_d2IOE79qN3g6lTM&q=<%=@event.location%>" allowfullscreen>
+</iframe>
+</p>
+
+<p>
+  <strong>Date:</strong>
+  <%= @event.date %>
+</p>
+
+<p>
+  <strong>time:</strong>
+  <%= @event.time %>
+</p>
+
+<%if current_user%>
+<%= link_to 'Edit', edit_event_path(@event) %> |
+<%= link_to 'Back', events_path %> |
+<%= link_to 'Destroy', @event, method: :delete, data: { confirm: 'Are you sure?' } %>
+<%end%>

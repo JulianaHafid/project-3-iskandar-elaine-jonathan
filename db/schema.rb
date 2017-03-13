@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170307075523) do
+ActiveRecord::Schema.define(version: 20170312043036) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -22,21 +22,25 @@ ActiveRecord::Schema.define(version: 20170307075523) do
     t.date     "date"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.time     "time"
+    t.string   "image_url"
     t.index ["user_id"], name: "index_events_on_user_id", using: :btree
   end
 
   create_table "requests", force: :cascade do |t|
-    t.integer  "user_id"
+    t.integer  "requestor_id"
+    t.integer  "standin_id"
     t.integer  "event_id"
-    t.integer  "acceptor_id"
     t.float    "cost"
     t.text     "description"
     t.text     "status"
     t.text     "delivery_arrangement"
+    t.text     "image_url"
     t.datetime "created_at",           null: false
     t.datetime "updated_at",           null: false
     t.index ["event_id"], name: "index_requests_on_event_id", using: :btree
-    t.index ["user_id"], name: "index_requests_on_user_id", using: :btree
+    t.index ["requestor_id"], name: "index_users_on_requestor_id"
+    t.index ["standin_id"], name: "index_users_on_standin_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -61,5 +65,4 @@ ActiveRecord::Schema.define(version: 20170307075523) do
 
   add_foreign_key "events", "users"
   add_foreign_key "requests", "events"
-  add_foreign_key "requests", "users"
 end

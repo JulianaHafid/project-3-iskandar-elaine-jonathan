@@ -9,8 +9,9 @@ end
 gem 'carrierwave'
 gem 'pry'
 gem 'devise'
+gem 'cloudinary'
+gem 'gmaps4rails'
 gem 'stripe'
-# =============================================================
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.0.2'
