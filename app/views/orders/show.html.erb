@@ -1,9 +1,9 @@
 <div class="wrapper">
   <div class="response container">
-    <div class="content">
+    <div class="content" id="transaction-success">
       <% if @result %>
         <div class="icon">
-          <img src=<%= asset_path("#{@result[:icon]}.svg") %> alt="">
+          <img src="http://energyauditpeople.com/images/success-check-icon.png" width=150 alt="">
         </div>
 
         <h1><%= @result[:header] %></h1>
@@ -13,6 +13,8 @@
       <% else %>
         <section>
           <p>Test another transaction or see the Braintree API response.</p>
+
+          <%=@re%>
       </section>
 
       <% end %>
