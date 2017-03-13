@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
 
+  get 'orders/new'
+
   get 'events/index' => 'events#index'
   resources :events
 
@@ -10,7 +12,8 @@ Rails.application.routes.draw do
 
   get 'static/homepage' => 'static#homepage'
 
-  resources :charges
+  # resources :charges
+  resources :orders
 
   root 'static#homepage'
 end

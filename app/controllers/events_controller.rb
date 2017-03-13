@@ -1,6 +1,9 @@
 class EventsController < ApplicationController
   before_action :set_event, only: [:show, :edit, :update, :destroy]
+  before_action :admin? , only: [:new, :edit, :create, :update, :destroy]
+
   def index
+    @events = Event.all
   end
 
   def new
@@ -65,7 +68,12 @@ end
     @event = Event.find(params[:id])
   end
 
-
-
-
+  def admin?
+    if !current_user.is_Admin
+      redirect_to :events, :alert => "Hi there, it seems that you might be lost!"
+    if !current_user
+      redirect_to :new_user_registration, :notice => "Hi there, we invite you to sign up with us"
+    end
+  end
 end
+  end
