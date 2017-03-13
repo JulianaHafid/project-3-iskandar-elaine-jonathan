@@ -10,7 +10,7 @@
     <p>Location: <%=item.location%></p>
     <p>Date: <%=item.date%></p>
     <p>Time: <%=item.time%></p>
-    <!-- <%= link_to "Add New Request", new_request_path, method: :get, class: "btn btn-primary"%> -->
+    <%= link_to "Add New Request", new_request_path({:event_id=>item.id}), class: "btn btn-primary"%>
         </div>
       </div>
     </div>
