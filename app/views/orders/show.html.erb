@@ -1,0 +1,22 @@
+<div class="wrapper">
+  <div class="response container">
+    <div class="content">
+      <% if @result %>
+        <div class="icon">
+          <img src=<%= asset_path("#{@result[:icon]}.svg") %> alt="">
+        </div>
+
+        <h1><%= @result[:header] %></h1>
+        <section>
+          <p><%= @result[:message] %></p>
+        </section>
+      <% else %>
+        <section>
+          <p>Test another transaction or see the Braintree API response.</p>
+      </section>
+
+      <% end %>
+
+    </div>
+  </div>
+</div>
