@@ -19,7 +19,11 @@
 
 <p>
   <strong>Standin:</strong>
-  <%= @request.standin_id %>
+  <%if @request.standin_id != nil %>
+  <%=@request.standin.name%>
+  <%else%>
+  <%=@request.standin_id%>
+  <%end%>
 </p>
 
 <p>

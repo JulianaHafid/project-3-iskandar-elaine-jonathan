@@ -11,8 +11,13 @@
     </div>
   <% end %>
   <div class="field">
-    <%= f.label :Event_ID %>
-    <%= f.text_field :event_id %>
+    <%= f.label :Event_Name %>
+    <%= f.select :event_id, options_from_collection_for_select(Event.order(:name).all, "id", "name", params[:event_id]|| request.event_id) %>
+  <%= f.select(:event_id) do %>
+    <% event.each do |c| -%>
+      <%= content_tag(:option, c.name, value: c.id) %>
+    <% end %>
+  <% end %>
   </div>
   <div class="field">
     <%= f.label :description %>
