@@ -16,7 +16,7 @@ class ChargesController < ApplicationController
       :customer    => customer.id,
       :amount      => @amount,
       :description => 'StandIn request service fee',
-      :currency    => 'usd'
+      :currency    => 'SGD'
     )
 
     rescue Stripe::CardError => e

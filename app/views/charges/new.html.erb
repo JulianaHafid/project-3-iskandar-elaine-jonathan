@@ -11,8 +11,12 @@
   </article>
 
   <script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
-          data-key="<%= Rails.configuration.stripe[:publishable_key] %>"
-          data-description="A month's subscription"
+          data-key="<%= ENV['PUBLISHABLE_KEY'] %>"
+          data-name="StandIn Service Fee"
+          data-description="Adidas NMD Launch for Kevin Lim"
+          data-image="https://cdn1.iconfinder.com/data/icons/people-set-2/148/Mens-512.png"
           data-amount="500"
-          data-locale="auto"></script>
+          data-locale="auto"
+          data-currency="sgd">
+  </script>
 <% end %>
