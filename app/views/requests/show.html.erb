@@ -1,0 +1,49 @@
+<h1><%=@request.event.name%></h1>
+
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Event Location:</strong>
+  <%= @request.event.location %>
+</p>
+
+<p>
+  <strong>Event Time:</strong>
+  <%= @request.event.time %>
+</p>
+
+<p>
+  <strong>Requestor:</strong>
+  <%= @request.requestor.name %>
+</p>
+
+<p>
+  <strong>Standin:</strong>
+  <%= @request.standin_id %>
+</p>
+
+<p>
+  <strong>Description:</strong>
+  <%= @request.description %>
+</p>
+
+<p>
+  <strong>Cost:</strong>
+  <%= @request.cost %>
+</p>
+
+<p>
+<strong>Request Item Image:</strong>
+<%= image_tag (@request.image_url) %>
+</p>
+
+<p>
+<strong>Delivery Arrangement:</strong>
+<%= @request.delivery_arrangement %>
+</p>
+
+<%if current_user%>
+<%= link_to 'Edit', edit_request_path(@request) %> |
+<%= link_to 'Back', requests_path %> |
+<%= link_to 'Destroy', @request, method: :delete, data: { confirm: 'Are you sure?' } %>
+<%end%>

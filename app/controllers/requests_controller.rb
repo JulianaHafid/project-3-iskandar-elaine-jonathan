@@ -16,6 +16,7 @@ class RequestsController < ApplicationController
   # GET /requests/new
   def new
     @request = Request.new
+    @event = Event.all
   end
 
   # GET /requests/1/edit
@@ -26,6 +27,7 @@ class RequestsController < ApplicationController
   # POST /requests.json
   def create
     @request = Request.new(request_params)
+    @request.requestor_id = current_user.id
 
     respond_to do |format|
       if @request.save
@@ -70,6 +72,6 @@ class RequestsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def request_params
-      params.require(:request).permit(:requestor_id, :event_id, :description, :image_url)
+      params.require(:request).permit(:requestor_id, :event_id, :description, :image_url, :cost, :delivery_arrangement)
     end
 end
