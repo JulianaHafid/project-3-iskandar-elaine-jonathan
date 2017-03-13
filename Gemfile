@@ -11,7 +11,6 @@ gem 'pry'
 gem 'devise'
 gem 'cloudinary'
 gem 'gmaps4rails'
-gem 'stripe'
 gem 'braintree'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
