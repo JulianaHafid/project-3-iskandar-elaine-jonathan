@@ -1,17 +1,29 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
-one:
-  user_id: one
-  acceptor_id: 1
-  cost: 1.5
-  description: MyText
-  status: MyText
-  delivery_arrangement: MyText
+lunch_request:
+  requestor: :jk_rowling
+  standin_id: 2
+  event: :lunch_event
+  cost: 30
+  description: Help to queue at ramen restaurant
+  status: pending
+  delivery_arrangement: meet at the restaurant
+  image_url: nil
 
-two:
-  user_id: two
-  acceptor_id: 1
-  cost: 1.5
-  description: MyText
-  status: MyText
-  delivery_arrangement: MyText
+nil_requestor:
+  requestor: nil
+  standin_id: 2
+  event_id: 2
+  cost: 30
+  description: Help to buy Harry Potter Book
+  status: open
+  delivery_arrangement: hand deliver book
+
+nil_event:
+  requestor: :tolkien
+  standin_id: 2
+  event_id:
+  cost: 30
+  description: Help to buy Harry Potter Book
+  status: open
+  delivery_arrangement: post
