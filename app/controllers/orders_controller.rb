@@ -50,4 +50,10 @@ class OrdersController < ApplicationController
     end
   end
 
+  def void
+    result = Braintree::Transaction.void(@transaction.id)
+    flash[:notice] = "Transaction voided." if result.success?
+    redirect_to order_path(result.transaction.id)
+  end
+
 end
