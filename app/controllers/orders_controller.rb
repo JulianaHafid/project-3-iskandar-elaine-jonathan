@@ -29,7 +29,7 @@ class OrdersController < ApplicationController
 
     flash[:notice] = "Transaction successful! Enjoy!" if result.success?
     flash[:alert] = "Something is amiss. #{result.transaction.processor_response_text}" unless result.success?
-    redirect_to action: :new
+    redirect_to order_path(result.transaction.id)
   end
 
   def _create_result_hash(transaction)
@@ -38,7 +38,7 @@ class OrdersController < ApplicationController
     if TRANSACTION_SUCCESS_STATUSES.include? status
       result_hash = {
         :header => "Success!",
-        :icon => "success",
+        :icon => "http://energyauditpeople.com/images/success-check-icon.png",
         :message => "Your test transaction has been successfully processed."
       }
     else
@@ -48,6 +48,12 @@ class OrdersController < ApplicationController
         :message => "Your test transaction has a status of #{status}. Please try again."
       }
     end
+  end
+
+  def void
+    result = Braintree::Transaction.void(@transaction.id)
+    flash[:notice] = "Transaction voided." if result.success?
+    redirect_to order_path(result.transaction.id)
   end
 
 end
