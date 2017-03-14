@@ -26,6 +26,12 @@
         <p class="alert alert-danger"><%= alert %></p>
       <% end %>
 
+      <% if current_user %>
+        <pre>Current User: <%= current_user.name %></pre>
+      <% else %>
+        <pre>No user is logged in</pre>
+      <% end %>
+
       <%= yield %>
 
     </div>
