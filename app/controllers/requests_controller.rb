@@ -28,6 +28,7 @@ class RequestsController < ApplicationController
   def create
     @request = Request.new(request_params)
     @request.requestor_id = current_user.id
+    @request.status = 'new'
 
     respond_to do |format|
       if @request.save
@@ -63,6 +64,24 @@ class RequestsController < ApplicationController
       format.json { head :no_content }
     end
   end
+  # GET /requests/1/edit
+  def edit
+  end
+
+  # PATCH/PUT /requests_status/1
+  # PATCH/PUT /requests_status/1.json
+  # def updateStatus
+  #   @request = Request.new(status_params)
+  #   respond_to do |format|
+  #     if @request.update()
+  #       format.html { redirect_to @request, notice: 'Request was successfully updated.' }
+  #       format.json { render :index, status: :ok, location: @request }
+  #     else
+  #       format.html { render :index }
+  #       format.json { render json: @request.errors, status: :unprocessable_entity }
+  #     end
+  #   end
+  # end
 
   private
     # Use callbacks to share common setup or constraints between actions.
@@ -72,6 +91,9 @@ class RequestsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def request_params
-      params.require(:request).permit(:requestor_id, :event_id, :description, :image_url, :cost, :delivery_arrangement)
+      params.require(:request).permit(:requestor_id, :event_id, :description, :image_url, :cost, :delivery_arrangement, :status, :standin_id)
     end
+    # def status_params
+    #   params.require(:request).permit(:id, :status)
+    # end
 end

@@ -11,8 +11,8 @@
     </div>
   <% end %>
   <div class="field">
-    <%= f.label :Event_ID %>
-    <%= f.text_field :event_id %>
+    <%= f.label :Event_Name %>
+    <%= f.select :event_id, options_from_collection_for_select(Event.order(:name).all, "id", "name", params[:event_id]|| request.event_id) %>
   </div>
   <div class="field">
     <%= f.label :description %>

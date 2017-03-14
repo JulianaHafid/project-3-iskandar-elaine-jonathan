@@ -1,2 +1,26 @@
-<h1>Requests#index</h1>
-<p>Find me in app/views/events/index.html.erb</p>
+<h1>All Requests</h1>
+
+<% @request.each do |item| %>
+<div class="d-inline-block">
+  <div class="col-md-4">
+    <div class="panel panel-default">
+      <div class="panel-heading text-center"><%=item.description%></div>
+        <div class="panel-body text-center">
+    <%= image_tag item.image_url.thumbnail %>
+    <p>Cost: <%=item.cost%></p>
+    <p>Status: <%=item.status%></p>
+    <%if item.status == 'new' && item.standin_id == nil && item.requestor_id != current_user.id%>
+    <%= link_to "Standin for #{item.requestor.name}", request_path(item,"request[standin_id]" => current_user.id,"request[status]"=>'pending'), method: :patch, class: "btn btn-primary"%>
+    <%end%>
+    <%if item.status == 'pending' && item.requestor_id == current_user.id%>
+    <%= link_to 'Set Status to Completed',request_path(item, "request[status]"=>'completed'), method: :patch, class: "btn btn-primary"%>
+    <%end%>
+    <%if item.status == 'pending' && item.standin_id == current_user.id && item.event.date > Date.today%>
+    <%= link_to 'Cancelled Standin',request_path(item, "request[status]"=>'new',"request[standin_id]" => ''), method: :patch, class: "btn btn-primary"%>
+    <%end%>
+        </div>
+      </div>
+    </div>
+  </div>
+
+<%end%>
