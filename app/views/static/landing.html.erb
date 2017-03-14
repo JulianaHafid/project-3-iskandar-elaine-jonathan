@@ -1,55 +1,70 @@
-<h1>Landing Page</h1>
+<h1>Welcome, <%= current_user.name %>!</h1>
 
-<h2>My Requests <a href="#" class="btn btn-success"><span class="glyphicon glyphicon-plus"></span> Add new request</a></h2>
+<% if current_user.is_Admin %>
+  <%= link_to "Admin Only: Create New Event", new_event_path, class: "btn btn-danger"%>
+<% end %>
+
+<h2>My Requests <a href="/requests/new" class="btn btn-success btn-raised"><span class="glyphicon glyphicon-plus"></span> Add new request</a></h2>
 
 <div class="row">
-<div class="col-md-4">
-  <div class="panel panel-default">
-    <div class="panel-heading">
-      <h3 class="panel-title">
-        Request Name
-        <br>
-      </h3>
-    </div>
-    <div class="panel-body">
-      <img src="http://unsplash.it/330">
-      <h5>Location</h5>
-      <a href="#" class="btn btn-primary col-sm-6">
-        <span class="glyphicon glyphicon-eye-open"></span> View
-      </a>
-      <form action="#">
-        <button class="btn btn-warning col-sm-6" type="submit">
-          <span class="glyphicon glyphicon-pencil"></span> Edit
-        </button>
-      </form>
-    </div>
-  </div>
-</div>
+  <% @request.each do |item| %>
+
+    <% if item.requestor.id == current_user.id %>
+
+      <div class="col-md-4">
+        <div class="panel panel-default z-depth-5">
+          <div class="panel-heading warning-color text-center"><h4><%=item.description%></h4></div>
+          <div class="panel-body text-center">
+            <%= image_tag item.image_url.thumbnail %>
+            <p>Event: <%= item.event.name %></p>
+            <p>Cost: $<%= item.cost %></p>
+            <p>Status: <%=item.status.capitalize!%></p>
+
+            <%if item.status == 'new' && item.standin_id == nil && item.requestor_id != current_user.id%>
+            <%= link_to "Standin for #{item.requestor.name}", request_path(item,"request[standin_id]" => current_user.id,"request[status]"=>'pending'), method: :patch, class: "btn btn-primary"%>
+            <%end%>
+
+            <%if item.status == 'pending' && item.requestor_id == current_user.id%>
+            <%= link_to 'Set Status to Completed',request_path(item, "request[status]"=>'completed'), method: :patch, class: "btn btn-primary"%>
+            <%end%>
+
+            <%if item.status == 'pending' && item.standin_id == current_user.id && item.event.date > Date.today%>
+            <%= link_to 'Cancelled Standin',request_path(item, "request[status]"=>'new',"request[standin_id]" => ''), method: :patch, class: "btn btn-primary" %>
+            <%end%>
+
+            <%= link_to "View", request_path(item.id), class: "btn btn-primary col-sm-6", style: "margin:0" %>
+            <%= link_to "Edit", edit_request_path(item.id), class: "btn btn-warning col-sm-6", style: "margin:0" %>
+
+          </div>
+        </div>
+      </div>
+    <% end %>
+  <%end%>
 </div>
 
 <h2>Trending Events</h2>
 
 <div class="row">
-<div class="col-md-4">
-  <div class="panel panel-default">
-    <div class="panel-heading">
-      <h3 class="panel-title">
-        Event Name
-        <br>
-      </h3>
+  <% @events.each do |item| %>
+    <div class="col-md-4">
+      <div class="card">
+        <div class="view overlay hm-zoom">
+          <%= image_tag item.image_url, class:"img-fluid"%>
+          <div class="mask flex-center">
+            <h1 class="white-text"><%=item.name%></h1>
+          </div>
+        </div>
+
+        <div class="card-block text-center" style="padding:0px">
+          <p>Location: <%=item.location%><br>
+          Date: <%=item.date.strftime("%e %B %Y")%><br>
+          Time: <%=item.time.strftime("%I:%M %P")%><br>
+
+          <%= link_to "View", request_path(item.id), class: "btn btn-primary col-sm-6", style: "margin:0" %>
+          <%= link_to "Request", new_request_path({:event_id=>item.id}), class: "btn btn-success col-sm-6", style: "margin:0" %></p>
+        </div>
+
+      </div>
     </div>
-    <div class="panel-body">
-      <img src="http://unsplash.it/330">
-      <h5>Location</h5>
-      <a href="#" class="btn btn-primary col-sm-6">
-        <span class="glyphicon glyphicon-eye-open"></span> View
-      </a>
-      <form action="#">
-        <button class="btn btn-success col-sm-6" type="submit">
-          <span class="glyphicon glyphicon-pencil"></span> Request
-        </button>
-      </form>
-    </div>
-  </div>
-</div>
+  <%end%>
 </div>
