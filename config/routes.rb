@@ -12,6 +12,7 @@ Rails.application.routes.draw do
   resources :requests
 
   get 'static/homepage' => 'static#homepage'
+  get '/landing' => 'static#landing'
 
   # resources :charges
   resources :orders
