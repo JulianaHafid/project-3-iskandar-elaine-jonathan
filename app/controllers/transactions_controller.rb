@@ -1,4 +1,4 @@
-class OrdersController < ApplicationController
+class TransactionsController < ApplicationController
 
   before_action :authenticate_user!, only: [:new, :show]
 
@@ -13,6 +13,7 @@ class OrdersController < ApplicationController
   ]
 
   def new
+    @transaction = Transaction.new
     @client_token = Braintree::ClientToken.generate
   end
 
@@ -25,7 +26,7 @@ class OrdersController < ApplicationController
     nonce = params[:payment_method_nonce]
     render action: :new and return unless nonce
     result = Braintree::Transaction.sale(
-      amount: "10.00b      ",
+      amount: "10.00",
       payment_method_nonce: nonce
     )
 
@@ -50,6 +51,11 @@ class OrdersController < ApplicationController
         :message => "Your test transaction has a status of #{status}. Please try again."
       }
     end
+  end
+  private
+  # Never trust parameters from the scary internet, only allow the white list through.
+  def transaction_params
+    params.require(:transaction).permit(:request_id, :amount_paid, :payment_gateway_id)
   end
 
 end
