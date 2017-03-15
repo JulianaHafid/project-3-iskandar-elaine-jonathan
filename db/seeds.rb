@@ -18,3 +18,14 @@
 # end
 
 # User.create(name: "Kevin Tan", contact: "81234567", email: "kevintan@email.com", is_Admin: false)
+
+User.create do |user|
+  user.name = 'Elaine'
+  user.email = 'elaine@gmail.com'
+  user.contact = 91239595
+  user.is_Admin = true
+  user.password = "project3"
+  user.password_confirmation = "project3"
+end
+
+puts "Finished DB seeding."
