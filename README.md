@@ -1,5 +1,6 @@
 
 ![alt text](https://i.imgur.com/sKUl26J.png | width=100)
+<img src="https://i.imgur.com/sKUl26J.png" width="40%">
 
 # StandIn
 
