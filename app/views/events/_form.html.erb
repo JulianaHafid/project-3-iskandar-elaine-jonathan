@@ -18,34 +18,35 @@
     <% end %>
 
     <div class="field">
-      <%= f.label :name %>
-      <%= f.text_field :name %>
+      <%= f.label :name, style:"font-size: 20px" %>
+      <%= f.text_field :name, style:"font-size: 20px; height:100%" %>
     </div>
 
     <div class="field">
-      <%= f.label :location %>
-      <%= f.text_field :location %>
+      <%= f.label :location, style:"font-size: 20px" %>
+      <%= f.text_field :location, style:"font-size: 20px; height:100%" %>
     </div>
 
     <div class="field">
-      <%= f.label :date %>
-      <%= f.date_field :date %>
+      <%= f.label :date, style:"font-size: 20px" %>
+      <%= f.date_field :date, style:"font-size: 20px; height: 100%" %>
     </div>
 
     <div class="field">
-      <%= f.label :time %>
-      <%= f.time_field :time %>
+      <%= f.label :time, style:"font-size: 20px" %>
+      <%= f.time_field :time, style:"font-size: 20px; height: 100%" %>
     </div>
 
     <div class="field">
-      <%= f.label :image_url, "Event Image" %>
+      <%= f.label :image_url, "Event Image", style:"font-size: 20px" %>
       <!-- changed to file_field -->
-      <%= f.file_field :image_url %>
+      <%= f.file_field :image_url, style:"font-size: 15px" %>
     </div>
 
     <div class="actions">
-      <%= f.submit %>
+      <%= f.submit 'Create Event', class: 'btn success-color' %>
     </div>
+
     <% end %>
 
   </div>

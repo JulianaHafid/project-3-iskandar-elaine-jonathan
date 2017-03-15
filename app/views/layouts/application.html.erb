@@ -9,6 +9,7 @@
 
     <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.0.3/css/bootstrap.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.0/css/font-awesome.min.css">
+    <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
   </head>
 
   <body>
@@ -18,17 +19,17 @@
     <div class="container">
 
       <% if notice %>
-        <p class="alert alert-success"><%= notice %></p>
+      <p class="alert success-color-dark white-text z-depth-2"><%= notice %></p>
       <% end %>
 
       <% if alert %>
-        <p class="alert alert-danger"><%= alert %></p>
+      <p class="alert danger-color-dark white-text z-depth-2"><%= alert %></p>
       <% end %>
 
       <%= yield %>
 
     </div>
-
+    
     <%= render "partials/footer" %>
 
   </body>

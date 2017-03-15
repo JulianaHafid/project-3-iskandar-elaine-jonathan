@@ -11,27 +11,27 @@
     </div>
   <% end %>
   <div class="field">
-    <%= f.label :Event_Name %>
+    <%= f.label :Event_Name, 'Event Name', style:"font-size: 20px" %>
     <%= f.select :event_id, options_from_collection_for_select(Event.order(:name).all, "id", "name", params[:event_id]|| request.event_id) %>
   </div>
   <div class="field">
-    <%= f.label :description %>
-    <%= f.text_area :description %>
+    <%= f.label :description, style:"font-size: 20px" %>
+    <%= f.text_area :description, style:"font-size: 20px; height:100%" %>
   </div>
   <div class="field">
-    <%= f.label :delivery_arrangement %>
-    <%= f.text_area :delivery_arrangement %>
+    <%= f.label :delivery_arrangement, style:"font-size: 20px" %>
+    <%= f.text_area :delivery_arrangement, style:"font-size: 20px; height:100%" %>
   </div>
   <div class="field">
-    <%= f.label :cost %>
-    <%= f.text_field :cost %>
+    <%= f.label :cost, style:"font-size: 20px" %>
+    <%= f.text_field :cost, style:"font-size: 20px; height:100%" %>
   </div>
   <div class="field">
-    <%= f.label :image_url, "Request Image" %>
+    <%= f.label :image_url, "Request Image", style:"font-size: 20px" %>
     <!-- changed to file_field -->
     <%= f.file_field :image_url %>
   </div>
   <div class="actions">
-    <%= f.submit %>
+    <%= f.submit 'Create Request', class: 'btn success-color' %>
   </div>
 <% end %>

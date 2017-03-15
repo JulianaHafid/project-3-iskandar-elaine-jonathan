@@ -13,21 +13,58 @@
  *= require_tree .
  *= require_self
  */
- * { border-radius: 0 !important; }
- body { padding-top: 100px; }
- footer { margin-top: 100px; }
- table, td, th { vertical-align: middle; border: none; }
- th { border-bottom: 1px solid #DDD; }
 
- .panel > .panel-body {
+html,
+body,
+.view {
+    height: 100%;
+}
+/* Navigation*/
+
+@media only screen and (max-width: 768px) {
+    .navbar {
+        background-color: #1C2331;
+    }
+}
+
+.flex-center {
+    color: #fff;
+}
+
+#contact .fa {
+    font-size: 5rem;
+    margin-bottom: 1rem;
+    color: #1C2331;
+}
+
+* { border-radius: 0 !important; }
+body { padding-top: 100px; }
+footer { margin-top: 100px; }
+table, td, th { vertical-align: middle; border: none; }
+th { border-bottom: 1px solid #DDD; }
+
+h1 {
+  font-family: 'Roboto';
+}
+
+p {
+  font-family: 'Roboto';
+  font-size: 16px;
+}
+
+.panel > .panel-body {
    padding: 10px 0px 0px 0px;
- }
+}
 
- .padding {
+.padding {
    padding: 10px;
- }
- 
- #transaction-success {
+}
+
+.title {
+  font-size: 55px;
+  color: orange;
+}
+#transaction-success {
    text-align: center;
    font-family: 'Courier New';
- }
+}
