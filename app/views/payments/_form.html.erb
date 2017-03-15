@@ -1,6 +1,8 @@
 <%= form_tag orders_path, method: "post" do %>
   <div id="dropin"></div>
-  <input type="submit" class="btn btn-primary" value="Pay $10">
+  <%= hidden_field_tag :id, params[:id] %>
+  <%= hidden_field_tag :cost, params[:cost] %>
+  <input type="submit" class="btn btn-primary" value="Pay <%=params[:cost]%>">
 <% end %>
 
 <%= @params %> <!-- We'll remove this later, just testing now -->
