@@ -1,6 +1,4 @@
-
-![alt text](https://i.imgur.com/sKUl26J.png | width=100)
-<img src="https://i.imgur.com/sKUl26J.png" width="40%">
+<img src="https://i.imgur.com/sKUl26J.png" width="25%">
 
 # StandIn
 
@@ -9,6 +7,9 @@ StandIn provides a peer-to-peer platform to match individuals facing a time crun
 Visit us [here](https://standin-app.herokuapp.com/)
 
 ##ERD
+
+<img src="hhttps://i.imgur.com/rx8osfW.png" width="30%">
+
 
 ##Wireframes
 
