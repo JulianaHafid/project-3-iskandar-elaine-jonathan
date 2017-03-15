@@ -1,15 +1,19 @@
 <h1>Welcome, <%= current_user.name %>!</h1>
 
 <% if current_user.is_Admin %>
-  <%= link_to "Admin Only: Create New Event", new_event_path, class: "btn btn-danger"%>
+  <div class="card red padding">
+      <h4 class="text-center">ADMIN ONLY
+      <br><%= link_to "Create New Event", new_event_path, class: "btn danger-color-dark"%>
+      <%= link_to "Set Admin Rights", users_path, class: "btn danger-color-dark"%></h4>
+  </div>
 <% end %>
 
-<h2>My Requests <a href="/requests/new" class="btn btn-success btn-raised"><span class="glyphicon glyphicon-plus"></span> Add new request</a></h2>
+<h2>My Requests <a href="/requests/new" class="btn green btn-raised"><span class="glyphicon glyphicon-plus"></span> Add new request</a></h2>
 
 <div class="row">
   <% @request.each do |item| %>
 
-    <% if item.requestor.id == current_user.id %>
+    <% if item.requestor.id == current_user.id%>
 
       <div class="col-md-4">
         <div class="panel panel-default z-depth-5">
@@ -32,8 +36,8 @@
             <%= link_to 'Cancelled Standin',request_path(item, "request[status]"=>'new',"request[standin_id]" => ''), method: :patch, class: "btn btn-primary" %>
             <%end%>
 
-            <%= link_to "View", request_path(item.id), class: "btn btn-primary col-sm-6", style: "margin:0" %>
-            <%= link_to "Edit", edit_request_path(item.id), class: "btn btn-warning col-sm-6", style: "margin:0" %>
+            <%= link_to "View", request_path(item.id), class: "btn blue col-sm-6", style: "margin:0" %>
+            <%= link_to "Edit", edit_request_path(item.id), class: "btn warning-color col-sm-6", style: "margin:0" %>
 
           </div>
         </div>
@@ -49,7 +53,7 @@
     <div class="col-md-4">
       <div class="card">
         <div class="view overlay hm-zoom">
-          <%= image_tag item.image_url, class:"img-fluid"%>
+          <%= image_tag item.image_url, class:"img-fluid", style:"max-width: 100%"%>
           <div class="mask flex-center">
             <h1 class="white-text"><%=item.name%></h1>
           </div>
@@ -60,8 +64,9 @@
           Date: <%=item.date.strftime("%e %B %Y")%><br>
           Time: <%=item.time.strftime("%I:%M %P")%><br>
 
-          <%= link_to "View", request_path(item.id), class: "btn btn-primary col-sm-6", style: "margin:0" %>
-          <%= link_to "Request", new_request_path({:event_id=>item.id}), class: "btn btn-success col-sm-6", style: "margin:0" %></p>
+          <%= link_to "View", event_path(item.id), class: "btn blue col-sm-6", style: "margin:0" %>
+          <%= link_to "Request", new_request_path({:event_id=>item.id}), class: "btn green col-sm-6", style: "margin:0" %></p>
+
         </div>
 
       </div>

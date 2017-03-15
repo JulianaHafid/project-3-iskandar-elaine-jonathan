@@ -3,6 +3,11 @@
 <p id="notice"><%= notice %></p>
 
 <p>
+  <strong>Description:</strong>
+  <%= @request.description %>
+</p>
+
+<p>
   <strong>Event Location:</strong>
   <%= @request.event.location %>
 </p>
@@ -26,10 +31,6 @@
   <%end%>
 </p>
 
-<p>
-  <strong>Description:</strong>
-  <%= @request.description %>
-</p>
 
 <p>
   <strong>Cost:</strong>
@@ -46,8 +47,15 @@
 <%= @request.delivery_arrangement %>
 </p>
 
+<p>
+<strong>Request Status:</strong>
+<%= @request.status %>
+</p>
+
 <%if current_user%>
 <%= link_to 'Edit', edit_request_path(@request) %> |
-<%= link_to 'Back', requests_path %> |
-<%= link_to 'Destroy', @request, method: :delete, data: { confirm: 'Are you sure?' } %>
+<%= link_to 'Back', requests_path %>
+<%if @request.status != "cancelled"%>
+|<%=link_to "Cancel", request_path(@request, "request[status]"=>"cancelled"), method: :patch%>
+<%end%>
 <%end%>

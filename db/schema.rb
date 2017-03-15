@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170312043036) do
+ActiveRecord::Schema.define(version: 20170315061636) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -39,8 +39,17 @@ ActiveRecord::Schema.define(version: 20170312043036) do
     t.datetime "created_at",           null: false
     t.datetime "updated_at",           null: false
     t.index ["event_id"], name: "index_requests_on_event_id", using: :btree
-    t.index ["requestor_id"], name: "index_users_on_requestor_id"
-    t.index ["standin_id"], name: "index_users_on_standin_id"
+    t.index ["requestor_id"], name: "index_users_on_requestor_id", using: :btree
+    t.index ["standin_id"], name: "index_users_on_standin_id", using: :btree
+  end
+
+  create_table "transactions", force: :cascade do |t|
+    t.integer  "request_id"
+    t.string   "paymentgateway_id"
+    t.float    "amount_paid"
+    t.datetime "created_at",        null: false
+    t.datetime "updated_at",        null: false
+    t.index ["request_id"], name: "index_transactions_on_request_id", using: :btree
   end
 
   create_table "users", force: :cascade do |t|
@@ -65,4 +74,5 @@ ActiveRecord::Schema.define(version: 20170312043036) do
 
   add_foreign_key "events", "users"
   add_foreign_key "requests", "events"
+  add_foreign_key "transactions", "requests"
 end
