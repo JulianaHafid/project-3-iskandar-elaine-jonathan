@@ -1,7 +1,8 @@
-# README
+# StandIn
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+StandIn provides a peer-to-peer platform to match individuals facing a time crunch with those who are willing to help with their errands or tasks.
+
+Visit us [here](https://standin-app.herokuapp.com/)
 
 Things you may want to cover:
 
