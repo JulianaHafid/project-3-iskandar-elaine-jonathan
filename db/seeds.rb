@@ -29,7 +29,7 @@ User.create do |user|
 end
 
 5.times do
-  Event.create(location: Faker::Pokemon.location, date: Faker::Date.between(Date.today, 70.days.from_now), time: '15:00:00', image_url: Faker::LoremPixel.image("400x300", false, 'food'))
+  Event.create!(user_id: 1, name: Faker::LordOfTheRings.character, location: Faker::Pokemon.location, date: Faker::Date.between(Date.today, 70.days.from_now), time: "15:00:00", image_url: Faker::LoremPixel.image("400x300", false, 'food'))
 end
 
 
