@@ -6,12 +6,13 @@ StandIn provides a peer-to-peer platform to match individuals facing a time crun
 
 Visit us [here](https://standin-app.herokuapp.com/)
 
-##ERD
+## ERD
 
-<img src="https://i.imgur.com/rx8osfW.png" width="30%">
+<img src="https://i.imgur.com/rx8osfW.png" width="60%">
 
+## Wireframes
 
-##Wireframes
+<img src="http://i.imgur.com/z88WD85.png">
 
 ##Ruby Version
 
