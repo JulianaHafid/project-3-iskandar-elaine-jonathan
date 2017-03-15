@@ -1,10 +1,20 @@
-<h1>All Users</h1>
+<h1>Administrator Mode</h1>
 
 <%@users.each do |person|%>
-<div class="container">
-  <p><%=person.name%></p>
-  <p><%=person.email%></p>
-  <p>Admin Status: <%=person.is_Admin%>
-  <%=link_to "Change Admin Status", user_path(person, "user[is_Admin]"=>!person.is_Admin), method: :patch, class: "btn btn-primary"%>
+<div class="card padding col-sm-4 text-center" style="margin: 5px">
+  <h2><%=person.name%></h2>
+  <div class="card-block">
+    <p><i><%=person.email%></i></p>
+
+    <% if person.is_Admin == true %>
+      <p>Administrator</p>
+      <%=link_to "Downgrade to Member", user_path(person, "user[is_Admin]"=>!person.is_Admin), method: :patch, class: "btn danger-color"%>
+
+    <% else %>
+      <p>Member</p>
+      <%=link_to "Upgrade to Admin", user_path(person, "user[is_Admin]"=>!person.is_Admin), method: :patch, class: "btn success-color"%>
+    <% end %>
+
+  </div>
 </div>
 <%end%>

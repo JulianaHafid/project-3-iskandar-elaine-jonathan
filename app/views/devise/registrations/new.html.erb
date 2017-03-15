@@ -1,39 +1,48 @@
-<h2>Sign up</h2>
+<div class="card" style="padding: 20px;">
+  <div class="card-block">
+    <div class=" text-center">
+      <h3><i class=" fa fa-user"></i> Register New User</h3>
+    </div>
+    <hr class="mt-2 mb-2">
 
 <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
   <%= devise_error_messages! %>
 
   <div class="field">
-    <%= f.label :name %><br />
-    <%= f.text_field :name, autofocus: true %>
+    <%= f.label :name, style:"font-size: 20px" %><br />
+    <%= f.text_field :name, autofocus: true, style:"font-size: 20px; height:100%" %>
   </div>
 
   <div class="field">
-    <%= f.label :contact %><br />
-    <%= f.text_field :contact, autofocus: true %>
+    <%= f.label :contact, style:"font-size: 20px" %><br />
+    <%= f.text_field :contact, autofocus: true, style:"font-size: 20px; height:100%" %>
   </div>
 
   <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true %>
+    <%= f.label :email, style:"font-size: 20px" %><br />
+    <%= f.email_field :email, autofocus: true, style:"font-size: 20px; height:100%" %>
   </div>
 
   <div class="field">
-    <%= f.label :password %>
+    <%= f.label :password, style:"font-size: 20px" %>
     <% if @minimum_password_length %>
     <em>(<%= @minimum_password_length %> characters minimum)</em>
     <% end %><br />
-    <%= f.password_field :password, autocomplete: "off" %>
+    <%= f.password_field :password, autocomplete: "off", style:"font-size: 20px; height:100%" %>
   </div>
 
   <div class="field">
-    <%= f.label :password_confirmation %><br />
-    <%= f.password_field :password_confirmation, autocomplete: "off" %>
+    <%= f.label :password_confirmation, style:"font-size: 20px" %><br />
+    <%= f.password_field :password_confirmation, autocomplete: "off", style:"font-size: 20px; height:100%" %>
   </div>
 
-  <div class="actions">
-    <%= f.submit "Sign up" %>
+  <br>
+  <div class="actions text-center">
+    <%= f.submit "Sign Up", class:"btn success-color" %>
   </div>
 <% end %>
+</div>
+</div>
 
+<br>
 <%= render "devise/shared/links" %>

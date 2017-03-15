@@ -1,9 +1,10 @@
 <!-- assigned @idea to idea already in new.html.erb under partials-->
 <div class="card" style="padding: 20px;">
   <div class="card-block">
-    <div class="form-header orange">
-      <h3>New Event</h3>
+    <div class=" text-center">
+      <h3><i class=" fa fa-pencil"></i> New Event</h3>
     </div>
+    <hr class="mt-2 mb-2">
     <%= form_for(event) do |f| %>
     <% if event.errors.any? %>
     <div id="error_explanation">
@@ -18,34 +19,35 @@
     <% end %>
 
     <div class="field">
-      <%= f.label :name %>
-      <%= f.text_field :name %>
+      <%= f.label :name, style:"font-size: 20px" %>
+      <%= f.text_field :name, style:"font-size: 20px; height:100%" %>
     </div>
 
     <div class="field">
-      <%= f.label :location %>
-      <%= f.text_field :location %>
+      <%= f.label :location, style:"font-size: 20px" %>
+      <%= f.text_field :location, style:"font-size: 20px; height:100%" %>
     </div>
 
     <div class="field">
-      <%= f.label :date %>
-      <%= f.date_field :date %>
+      <%= f.label :date, style:"font-size: 20px" %>
+      <%= f.date_field :date, style:"font-size: 20px; height: 100%" %>
     </div>
 
     <div class="field">
-      <%= f.label :time %>
-      <%= f.time_field :time %>
+      <%= f.label :time, style:"font-size: 20px" %>
+      <%= f.time_field :time, style:"font-size: 20px; height: 100%" %>
     </div>
 
     <div class="field">
-      <%= f.label :image_url, "Event Image" %>
-      <!-- changed to file_field -->
-      <%= f.file_field :image_url %>
+      <%= f.label :image_url, "Event Image", style:"font-size: 20px" %>
+      <!-- changed to file_field --><br><br>
+      <%= f.file_field :image_url, style:"font-size: 15px" %>
     </div>
 
-    <div class="actions">
-      <%= f.submit %>
+    <div class="actions text-center">
+      <%= f.submit 'Create Event', class: 'btn success-color' %>
     </div>
+
     <% end %>
 
   </div>
