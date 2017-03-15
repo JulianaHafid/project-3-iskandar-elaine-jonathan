@@ -1,3 +1,10 @@
+<div class="card" style="padding: 20px;">
+  <div class="card-block">
+    <div class=" text-center">
+      <h3><i class=" fa fa-pencil"></i> New Request</h3>
+    </div>
+    <hr class="mt-2 mb-2">
+
 <%= form_for(request) do |f| %>
   <% if request.errors.any? %>
     <div id="error_explanation">
@@ -31,7 +38,10 @@
     <!-- changed to file_field -->
     <%= f.file_field :image_url %>
   </div>
-  <div class="actions">
+  <div class="actions text-center">
     <%= f.submit 'Create Request', class: 'btn success-color' %>
   </div>
 <% end %>
+
+</div>
+</div>

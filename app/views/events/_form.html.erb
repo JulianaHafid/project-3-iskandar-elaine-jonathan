@@ -1,9 +1,10 @@
 <!-- assigned @idea to idea already in new.html.erb under partials-->
 <div class="card" style="padding: 20px;">
   <div class="card-block">
-    <div class="form-header orange">
-      <h3>New Event</h3>
+    <div class=" text-center">
+      <h3><i class=" fa fa-pencil"></i> New Event</h3>
     </div>
+    <hr class="mt-2 mb-2">
     <%= form_for(event) do |f| %>
     <% if event.errors.any? %>
     <div id="error_explanation">
@@ -39,11 +40,11 @@
 
     <div class="field">
       <%= f.label :image_url, "Event Image", style:"font-size: 20px" %>
-      <!-- changed to file_field -->
+      <!-- changed to file_field --><br><br>
       <%= f.file_field :image_url, style:"font-size: 15px" %>
     </div>
 
-    <div class="actions">
+    <div class="actions text-center">
       <%= f.submit 'Create Event', class: 'btn success-color' %>
     </div>
 
