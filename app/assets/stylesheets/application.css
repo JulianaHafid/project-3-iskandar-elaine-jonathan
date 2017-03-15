@@ -13,12 +13,16 @@
  *= require_tree .
  *= require_self
  */
-
+ * { border-radius: 0 !important; }
  body { padding-top: 100px; }
  footer { margin-top: 100px; }
  table, td, th { vertical-align: middle; border: none; }
  th { border-bottom: 1px solid #DDD; }
 
+ .panel > .panel-body {
+   padding: 10px 0px 0px 0px;
+ }
+ 
  #transaction-success {
    text-align: center;
    font-family: 'Courier New';

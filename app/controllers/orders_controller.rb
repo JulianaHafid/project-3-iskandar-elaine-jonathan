@@ -1,5 +1,7 @@
 class OrdersController < ApplicationController
 
+  before_action :authenticate_user!, only: [:new, :show]
+
   TRANSACTION_SUCCESS_STATUSES = [
     Braintree::Transaction::Status::Authorizing,
     Braintree::Transaction::Status::Authorized,
@@ -23,7 +25,7 @@ class OrdersController < ApplicationController
     nonce = params[:payment_method_nonce]
     render action: :new and return unless nonce
     result = Braintree::Transaction.sale(
-      amount: "10.00",
+      amount: "10.00b      ",
       payment_method_nonce: nonce
     )
 
@@ -48,12 +50,6 @@ class OrdersController < ApplicationController
         :message => "Your test transaction has a status of #{status}. Please try again."
       }
     end
-  end
-
-  def void
-    result = Braintree::Transaction.void(@transaction.id)
-    flash[:notice] = "Transaction voided." if result.success?
-    redirect_to order_path(result.transaction.id)
   end
 
 end
