@@ -1,5 +1,6 @@
 class RequestsController < ApplicationController
   before_action :set_request, only: [:show, :edit, :update, :destroy]
+  before_action :owner? , only: [:edit, :update, :destroy]
   before_action :authenticate_user!, only: [:index, :show, :new, :edit, :create, :update, :destroy]
 
   # GET /requests
@@ -21,6 +22,7 @@ class RequestsController < ApplicationController
 
   # GET /requests/1/edit
   def edit
+
   end
 
   # POST /requests
@@ -95,7 +97,13 @@ class RequestsController < ApplicationController
     def request_params
       params.require(:request).permit(:requestor_id, :event_id, :description, :image_url, :cost, :delivery_arrangement, :status, :standin_id)
     end
-    # def status_params
-    #   params.require(:request).permit(:id, :status)
-    # end
+
+    def owner?
+        if @request.requestor_id != current_user.id
+        redirect_to :events, :alert => "Hi there, it seems that you might be lost!"
+        if !current_user
+        redirect_to :new_user_registration, :notice => "Hi there, we invite you to sign up with us"
+      end
+    end
+  end
 end

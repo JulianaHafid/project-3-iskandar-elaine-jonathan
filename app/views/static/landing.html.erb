@@ -60,8 +60,8 @@
           Date: <%=item.date.strftime("%e %B %Y")%><br>
           Time: <%=item.time.strftime("%I:%M %P")%><br>
 
-          <%= link_to "View", request_path(item.id), class: "btn btn-primary col-sm-6", style: "margin:0" %>
-          <%= link_to "Request", new_request_path({:event_id=>item.id}), class: "btn btn-success col-sm-6", style: "margin:0" %></p>
+          <%= link_to "View Event", event_path(item.id), class: "btn btn-primary col-sm-6", style: "margin:0" %>
+          <%= link_to "Add My Request", new_request_path({:event_id=>item.id}), class: "btn btn-success col-sm-6", style: "margin:0" %></p>
         </div>
 
       </div>
