@@ -11,6 +11,9 @@ class RequestTest < ActiveSupport::TestCase
     assert_equal 'Jk Rowling', @lunch.requestor.name,  'The requestor name is not found'
   end
 
+  test "standin must be present for accepted requests" do
+    assert_equal 'JR Tolkien', @lunch.standin.name,  'The requestor name is not found'
+  end
 
   test " request should not be valid without an requestor" do
     assert_not @nil_requestor.valid?,  'the request should not be valid without a requestor'

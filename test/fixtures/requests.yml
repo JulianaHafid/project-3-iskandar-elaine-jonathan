@@ -2,7 +2,7 @@
 
 lunch_request:
   requestor: :jk_rowling
-  standin_id: 2
+  standin: :tolkien
   event: :lunch_event
   cost: 30
   description: Help to queue at ramen restaurant
