@@ -1,5 +1,5 @@
 
-![alt text](https://i.imgur.com/sKUl26J.png "StandIn Logo" =250x)
+![alt text](https://i.imgur.com/sKUl26J.png | width=100)
 
 # StandIn
 
