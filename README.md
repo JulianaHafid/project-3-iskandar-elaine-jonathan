@@ -15,11 +15,11 @@ Visit us [here](https://standin-app.herokuapp.com/)
 <img src="http://i.imgur.com/z88WD85.png">
 
 ## Ruby Version and System dependencies
-Rails 5.0.2
-Devise
-Cloudinary
-Carrierwave
-Braintree
+* Rails 5.0.2
+* Devise
+* Cloudinary
+* Carrierwave
+* Braintree
 
 ## Configuration
 * Git clone the repository
