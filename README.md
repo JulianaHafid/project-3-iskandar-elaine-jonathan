@@ -14,28 +14,14 @@ Visit us [here](https://standin-app.herokuapp.com/)
 
 <img src="http://i.imgur.com/z88WD85.png">
 
-##Ruby Version
+## Ruby Version and System dependencies
+Rails 5.0.2
+Devise
+Cloudinary
+Carrierwave
+Braintree
 
-##System dependencies
-
-
-
-Things you may want to cover:
-
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+## Configuration
+* Git clone the repository
+* Run `bundle install` on your terminals to install all dependencies
+* Run `rails db:migrate`
