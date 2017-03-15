@@ -28,4 +28,9 @@ User.create do |user|
   user.password_confirmation = "project3"
 end
 
+5.times do
+  Event.create(location: Faker::Pokemon.location, date: Faker::Date.between(Date.today, 70.days.from_now), time: '15:00:00', image_url: Faker::LoremPixel.image("400x300", false, 'food'))
+end
+
+
 puts "Finished DB seeding."

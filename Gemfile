@@ -12,7 +12,7 @@ gem 'devise'
 gem 'cloudinary'
 gem 'gmaps4rails'
 gem 'braintree'
-
+gem 'faker'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.0.2'
 # Use Puma as the app server
