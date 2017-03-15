@@ -1,0 +1,14 @@
+<%= form_tag transactions_path, method: "post" do %>
+  <div id="dropin"></div>
+  <%= hidden_field_tag :request_id, params[:request_id] %>
+  <%= hidden_field_tag :amount_paid, params[:amount_paid] %>
+  <input type="submit" class="btn btn-primary" value="Pay <%=params[:amount_paid]%>">
+<% end %>
+<script type="text/javascript">
+  $(document).on('turbolinks:load', setupBT);
+  function setupBT() {
+    braintree.setup("<%=@client_token%>", 'dropin', {
+      container: 'dropin'
+    });
+  }
+</script>
