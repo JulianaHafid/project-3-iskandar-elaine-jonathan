@@ -4,7 +4,7 @@
       <% if @result %>
         <div class="icon">
 
-        <% if @transaction.status == 'authorized' %>
+        <% if @braintree_transaction.status == 'authorized' %>
           <img src="http://energyauditpeople.com/images/success-check-icon.png" width=150 alt="Success">
         <% else %>
           <img src="http://www.myiconfinder.com/uploads/iconsets/256-256-fb707410a020d77346fcd2dc2f6cc93e-cross.png" width=150 alt="Failure">
@@ -18,29 +18,26 @@
         </section>
       <% else %>
         <section>
-          <p>Test another transaction or see the Braintree API response.</p>
-
-          <%=@re%>
+          <p>Test another @braintree_transaction or see the Braintree API response.</p>
       </section>
       <% end %>
 
       <section>
         <a href="#" class="btn btn-primary">Go Back to Payment List</a>
         <a href="https://sandbox.braintreegateway.com/login" class="btn btn-danger">Edit Transaction via Merchant Account</a>
-        <!-- <%= link_to 'Cancel Transaction', order_path, method: :get, data: {confirm: 'Are you sure?'}%> -->
       </section>
 
       <br><br>
 
       <section>
         <p>
-          Transaction Amount: $<%= @transaction.amount %>
+          Transaction Amount: $<%= @braintree_transaction.amount %>
         </p>
         <p>
-          Transaction Status: <%= @transaction.status %>
+          Transaction Status: <%= @braintree_transaction.status %>
         </p>
         <p>
-          Time of Transaction: <%= @transaction.created_at %>
+          Time of Transaction: <%= @braintree_transaction.created_at %>
         </p>
       </section>
 

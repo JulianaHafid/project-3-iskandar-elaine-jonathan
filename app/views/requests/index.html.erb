@@ -16,7 +16,7 @@
     <%= link_to "Standin for #{item.requestor.name}", request_path(item,"request[standin_id]" => current_user.id,"request[status]"=>'pending'), method: :patch, class: "btn btn-primary"%>
     <%end%>
     <%if item.status == 'pending' && item.requestor_id == current_user.id%>
-    <%= link_to 'Set Status to Completed',request_path(item, "request[status]"=>'completed'), method: :patch, class: "btn btn-primary"%>
+    <%= link_to "Pay Standin", new_transaction_path({:request_id=>item.id,:amount_paid=>item.cost}), class: "btn btn-primary"%>
     <%end%>
     <%if item.status == 'pending' && item.standin_id == current_user.id && item.event.date > Date.today%>
     <%= link_to 'Cancelled Standin',request_path(item, "request[status]"=>'new',"request[standin_id]" => ''), method: :patch, class: "btn btn-primary"%>

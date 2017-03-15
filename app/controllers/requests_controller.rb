@@ -48,13 +48,13 @@ class RequestsController < ApplicationController
   def update
     respond_to do |format|
       if @request.update(request_params)
-        if @request.status != 'completed'
+        # if @request.status != 'completed'
           format.html { redirect_to @request, notice: 'Request was successfully updated.' }
           format.json { render :show, status: :ok, location: @request }
-        else
-          format.html { redirect_to controller:'orders', action: 'new', id:@request.id, cost:@request.cost }
-          format.json { render :show, status: :ok, location: @request }
-        end
+        # else
+        #   format.html { redirect_to controller:'orders', action: 'new', id:@request.id, cost:@request.cost }
+        #   format.json { render :show, status: :ok, location: @request }
+        # end
       else
         format.html { render :edit }
         format.json { render json: @request.errors, status: :unprocessable_entity }
