@@ -22,6 +22,10 @@
  .panel > .panel-body {
    padding: 10px 0px 0px 0px;
  }
+
+ .padding {
+   padding: 10px;
+ }
  
  #transaction-success {
    text-align: center;

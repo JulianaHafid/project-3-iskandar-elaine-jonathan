@@ -1,7 +1,11 @@
 <h1>Welcome, <%= current_user.name %>!</h1>
 
 <% if current_user.is_Admin %>
-  <%= link_to "Admin Only: Create New Event", new_event_path, class: "btn btn-danger"%>
+  <div class="card red padding">
+      <h4 class="text-center">ADMIN ONLY
+      <br><%= link_to "Create New Event", new_event_path, class: "btn danger-color-dark"%>
+      <%= link_to "Set Admin Rights", users_path, class: "btn danger-color-dark"%></h4>
+  </div>
 <% end %>
 
 <h2>My Requests <a href="/requests/new" class="btn btn-success btn-raised"><span class="glyphicon glyphicon-plus"></span> Add new request</a></h2>
