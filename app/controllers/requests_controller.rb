@@ -1,6 +1,6 @@
 class RequestsController < ApplicationController
   before_action :set_request, only: [:show, :edit, :update, :destroy]
-  before_action :owner? , only: [:edit, :update, :destroy]
+  before_action :owner? , only: [:edit, :destroy]
   before_action :authenticate_user!, only: [:index, :show, :new, :edit, :create, :update, :destroy]
 
   # GET /requests
