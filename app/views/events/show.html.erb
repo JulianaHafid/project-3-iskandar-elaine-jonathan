@@ -1,39 +1,37 @@
-<h1><%=@event.name%></h1>
+<div class="card padding">
 
-<p id="notice"><%= notice %></p>
+    <h1><%=@event.name%></h1>
 
-<p>
-  <strong>Name:</strong>
-  <%= @event.name %>
-</p>
+    <h2>
+        <i class="fa fa-calendar-o"></i>
+        <%= @event.date.strftime("%e %B %Y") %>
+        <br>
+        <i class="fa fa-clock-o"></i>
+        <%= @event.time.strftime("%I:%M %p") %>
+    </h2>
 
-<p>
-<%= image_tag (@event.image_url) %>
-</p>
+    <span class="badge blue">Event</span><br><br>
 
-<p>
-  <strong>Location:</strong>
-  <%= @event.location %>
-</p>
-<p>
-  <iframe class="user-map"
-frameborder="0" style="border:0"
-src="https://www.google.com/maps/embed/v1/place?key=AIzaSyCsfwe3COwAH6Ju4CA_d2IOE79qN3g6lTM&q=<%=@event.location%>" allowfullscreen>
-</iframe>
-</p>
+    <div class="card-block">
 
-<p>
-  <strong>Date:</strong>
-  <%= @event.date %>
-</p>
+        <div class="row">
 
-<p>
-  <strong>time:</strong>
-  <%= @event.time %>
-</p>
+            <div class="col-md-7">
+                <%= image_tag (@event.image_url), class:"z-depth-1" %>
+            </div>
 
-<%if current_user%>
-<%= link_to 'Edit', edit_event_path(@event) %> |
-<%= link_to 'Back', events_path %> |
-<%= link_to 'Destroy', @event, method: :delete, data: { confirm: 'Are you sure?' } %>
-<%end%>
+            <div class="col-md-5">
+                <iframe class="user-map z-depth-1" frameborder="0" style="border:0; width:100%; min-height:340px" src="https://www.google.com/maps/embed/v1/place?key=AIzaSyCsfwe3COwAH6Ju4CA_d2IOE79qN3g6lTM&q=<%=@event.location%>" allowfullscreen></iframe>
+            </div>
+
+        </div>
+        <br>
+        <%if current_user%>
+        <%= link_to 'Edit', edit_event_path(@event), class:"btn warning-color" %>
+        <%= link_to 'Back', events_path, class:"btn primary-color" %>
+        <%= link_to 'Delete Event', @event, method: :delete, data: { confirm: 'Are you sure?' }, class:"btn danger-color" %>
+        <%end%>
+
+    </div>
+
+</div>

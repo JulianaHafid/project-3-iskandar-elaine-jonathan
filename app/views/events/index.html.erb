@@ -1,19 +1,28 @@
 <h1>Featured Events</h1>
+<div class="row">
 
-<% @events.each do |item| %>
-<div class="d-inline-block">
-  <div class="col-md-4">
-    <div class="panel panel-default">
-      <div class="panel-heading text-center"><%=item.name%></div>
-        <div class="panel-body text-center">
-    <%= image_tag item.image_url.thumbnail %>
-    <p>Location: <%=item.location%></p>
-    <p>Date: <%=item.date%></p>
-    <p>Time: <%=item.time%></p>
-    <%= link_to "Add New Request", new_request_path({:event_id=>item.id}), class: "btn btn-primary"%>
+    <% @events.each do |item| %>
+    <div class="col-md-4">
+        <div class="card">
+            <div class="view overlay hm-zoom hm-white-light">
+                <%= image_tag item.image_url, class:"img-fluid", style:"max-width: 100%"%>
+                <div class="mask flex-center">
+                    <h1 class="white-text"><%=item.name%></h1>
+                </div>
+            </div>
+
+            <div class="card-block text-center" style="padding:0px">
+                <p><%=item.location%><br>
+                    <%=item.date.strftime("%e %B %Y")%><br>
+                    <%=item.time.strftime("%I:%M %P")%><br>
+
+                    <%= link_to "View", event_path(item.id), class: "btn blue col-sm-6", style: "margin:0" %>
+                    <%= link_to "Request", new_request_path({:event_id=>item.id}), class: "btn green col-sm-6", style: "margin:0" %></p>
+
+            </div>
+
         </div>
-      </div>
     </div>
-  </div>
 
-<%end%>
+    <%end%>
+</div>
