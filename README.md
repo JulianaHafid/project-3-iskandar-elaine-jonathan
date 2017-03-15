@@ -8,7 +8,7 @@ Visit us [here](https://standin-app.herokuapp.com/)
 
 ##ERD
 
-<img src="hhttps://i.imgur.com/rx8osfW.png" width="30%">
+<img src="https://i.imgur.com/rx8osfW.png" width="30%">
 
 
 ##Wireframes
