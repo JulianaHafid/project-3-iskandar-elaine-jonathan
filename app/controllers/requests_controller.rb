@@ -2,6 +2,8 @@ class RequestsController < ApplicationController
   before_action :set_request, only: [:show, :edit, :update, :destroy]
   before_action :owner? , only: [:edit, :destroy]
   before_action :authenticate_user!, only: [:index, :show, :new, :edit, :create, :update, :destroy]
+  before_action :event_too_late? , only: [:new, :create]
+  before_action :can_change? , only: [:edit, :update, :destroy]
 
   # GET /requests
   # GET /requests.json
@@ -106,4 +108,24 @@ class RequestsController < ApplicationController
       end
     end
   end
+
+  def event_too_late?
+    @event = Event.find(params[:event_id])
+    p @event.date - 3.days
+      if Date.today > (@event.date - 1.days)
+      redirect_to :events, :alert => "Hi there, we are not taking requests for this event anymore!"
+  end
+end
+
+def can_change?
+  @event = Event.find(@request.event_id)
+  if @request.status == ("cancelled" || "event cancelled")
+    redirect_to landing_path, :alert => "Sorry, request has already been cancelled. Please create a new request"
+  end
+  if Date.today > (@event.date - 1.days)
+    redirect_to landing_path, :alert => "Sorry, request has already been cancelled. Please create a new request"
+  end
+end
+
+
 end
