@@ -1,6 +1,5 @@
 Rails.application.routes.draw do
 
-  get 'orders/new'
 
   get 'events/index' => 'events#index'
   resources :events
@@ -18,7 +17,7 @@ Rails.application.routes.draw do
 
   # resources :charges
   resources :transactions
-  get 'transactions/:id/showTrans' => "transactions#showTrans"
+  get 'transactions/:id/showTrans' => "transactions#showTrans", :as => "showTrans" 
 
   root 'static#homepage'
 end
