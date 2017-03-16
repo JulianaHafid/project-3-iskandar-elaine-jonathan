@@ -29,7 +29,6 @@
          </li>
        </ul>
       </li>
-          <li><%= link_to current_user.name, edit_user_registration_path, class:"white-text"%></li>
           <li><%= link_to "Log Out", destroy_user_session_path, method: :delete, class:"white-text" %></li>
         <% else %>
           <li><%= link_to "Log In", new_user_session_path, class:"white-text" %></li>
