@@ -1,9 +1,53 @@
 <h1>All Requests</h1>
 
-
-
 <% @request.each do |item| %>
-<div class="d-inline-block">
+<div class="col-md-4">
+    <div class="panel panel-default">
+        <div class="panel-heading warning-color text-center">
+            <h4>"<%=item.description%>"</h4>
+        </div>
+        <div class="panel-body text-center">
+
+            <div class="view overlay hm-zoom hm-white-light">
+                <%= image_tag item.event.image_url, class:"img-fluid", style:"max-width: 100%"%>
+                <div class="mask flex-center">
+                    <h1 class="white-text"><%=item.event.name%>, $<%= item.cost %>0</h1>
+                </div>
+            </div>
+
+            <p>Cost: $<%= item.cost %>0
+                <br>Status:
+                <%=item.status.capitalize!%></p>
+
+            <%if item.status == 'new' && item.standin_id == nil && item.requestor_id != current_user.id%>
+            <%= link_to "Standin for #{item.requestor.name}", request_path(item,"request[standin_id]" => current_user.id,"request[status]"=>'pending'), method: :patch, class: "btn btn-primary"%>
+            <%end%>
+
+            <%if item.status == 'pending' && item.requestor_id == current_user.id%>
+            <%= link_to 'Set Status to Completed',request_path(item, "request[status]"=>'completed'), method: :patch, class: "btn btn-primary"%>
+            <%end%>
+
+            <%if item.status == 'pending' && item.standin_id == current_user.id && item.event.date > Date.today%>
+            <%= link_to 'Cancel Standin',request_path(item, "request[status]"=>'new',"request[standin_id]" => ''), method: :patch, class: "btn primary-color" %>
+            <%end%>
+
+            <%if item.status.capitalize == 'Pending' && item.requestor_id == current_user.id%>
+
+            <%= link_to "View", request_path(item.id), class: "btn blue col-sm-4", style: "margin:0" %>
+            <%= link_to "Edit", edit_request_path(item.id), class: "btn warning-color col-sm-4", style: "margin:0" %>
+            <%= link_to "Pay StandIn", new_transaction_path({:request_id=>item.id,:amount_paid=>item.cost}), class: "btn green col-sm-4", style: "margin:0"%>
+
+        <% else %>
+
+            <%= link_to "View", request_path(item.id), class: "btn blue col-sm-6", style: "margin:0" %>
+            <%= link_to "Edit", edit_request_path(item.id), class: "btn warning-color col-sm-6", style: "margin:0" %>
+
+            <% end %>
+
+        </div>
+    </div>
+</div>
+<!-- <div class="d-inline-block">
   <div class="col-md-4">
     <div class="panel panel-default">
       <div class="panel-heading text-center"><%=item.description%></div>
@@ -15,13 +59,13 @@
     <%= link_to "Standin for #{item.requestor.name}", request_path(item,"request[standin_id]" => current_user.id,"request[status]"=>'pending'), method: :patch, class: "btn btn-primary"%>
     <%end%>
     <%if item.status == 'pending' && item.requestor_id == current_user.id%>
-    <%= link_to "Pay Standin", new_transaction_path({:request_id=>item.id,:amount_paid=>item.cost}), class: "btn btn-primary"%>
+    <%= link_to "Pay Standin", new_transaction_path({:request_id=>item.id,:amount_paid=>item.cost}), class: "btn primary-color"%>
     <%end%>
     <%if item.status == 'pending' && item.standin_id == current_user.id && item.event.date > Date.today%>
-    <%= link_to 'Cancelled Standin',request_path(item, "request[status]"=>'new',"request[standin_id]" => ''), method: :patch, class: "btn btn-primary"%>
+    <%= link_to 'Cancel Standin',request_path(item, "request[status]"=>'new',"request[standin_id]" => ''), method: :patch, class: "btn primary-color"%>
     <%end%>
         </div>
       </div>
     </div>
-  </div>
+  </div> -->
 <%end%>

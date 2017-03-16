@@ -1,25 +1,27 @@
+<img src="https://i.imgur.com/sKUl26J.png" width="25%">
+
 # StandIn
 
 StandIn provides a peer-to-peer platform to match individuals facing a time crunch with those who are willing to help with their errands or tasks.
 
 Visit us [here](https://standin-app.herokuapp.com/)
 
-Things you may want to cover:
+## ERD
 
-* Ruby version
+<img src="https://i.imgur.com/rx8osfW.png" width="60%">
 
-* System dependencies
+## Wireframes
 
-* Configuration
+<img src="http://i.imgur.com/z88WD85.png">
 
-* Database creation
+## Ruby Version and System dependencies
+* Rails 5.0.2
+* Devise
+* Cloudinary
+* Carrierwave
+* Braintree
 
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+## Configuration
+* Git clone the repository
+* Run `bundle install` on your terminals to install all dependencies
+* Run `rails db:migrate`
