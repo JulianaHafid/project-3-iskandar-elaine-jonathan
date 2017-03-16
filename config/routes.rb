@@ -19,6 +19,6 @@ Rails.application.routes.draw do
   # resources :charges
   resources :transactions
   get 'transactions/:id/showTrans' => "transactions#showTrans"
-  get 'users/:id/history' => "users#history"
+  get 'user/history' => "users#history"
   root 'static#homepage'
 end
