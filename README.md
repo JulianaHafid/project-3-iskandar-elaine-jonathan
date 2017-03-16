@@ -22,3 +22,8 @@ StandIn provides a peer-to-peer platform to match individuals facing a time crun
 * User Authentication: Devise
 * Image Upload: Carrierwave, Cloundinary
 * Payments: Braintree SDK
+
+## References, Tools, and Inspiration
+* Coolors
+* FlatIcon
+* Instructors and Classmates at General Assembly Singapore
