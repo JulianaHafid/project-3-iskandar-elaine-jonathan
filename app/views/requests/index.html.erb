@@ -8,14 +8,16 @@
         </div>
         <div class="panel-body text-center">
 
-            <div class="view overlay hm-zoom hm-white-light">
-                <%= image_tag item.event.image_url, class:"img-fluid", style:"max-width: 100%"%>
+            <div class="view overlay hm-zoom hm-black-light">
+                <iframe class="user-map z-depth-1" frameborder="0" style="border:0; width:100%; height:300px" src="https://www.google.com/maps/embed/v1/directions?key=AIzaSyByUpVKGIl-ZT0MxU0yJBBIDdL_SIEVrJg&origin=My+Location&destination=<%=item.event.location%>" allowfullscreen></iframe>
                 <div class="mask flex-center">
                     <h1 class="white-text"><%=item.event.name%>, $<%= item.cost %>0</h1>
                 </div>
             </div>
 
-            <p>Cost: $<%= item.cost %>0
+            <p> Requestor: <%= item.requestor.name %>
+              <br>Event: <%= item.event.name %>
+              <br>Cost: $<%= item.cost %>0
                 <br>Status:
                 <%=item.status.capitalize!%></p>
 
