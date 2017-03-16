@@ -5,7 +5,7 @@
   <input type="submit" class="btn btn-primary" value="Pay <%=params[:amount_paid]%>">
 <% end %>
 <script type="text/javascript">
-  $(document).addEventListener("page:load", setupBT);
+  $(document).on('turbolinks:load', setupBT);
   function setupBT() {
     braintree.setup("<%=@client_token%>", 'dropin', {
       container: 'dropin'
