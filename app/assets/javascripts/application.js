@@ -11,6 +11,7 @@
 // about supported directives.
 //
 //= require jquery-2.2.3.min
+//= require jquery.turbolinks
 //= require jquery_ujs
 //= require tether.min
 //= require bootstrap.min
