@@ -18,6 +18,9 @@
             <br>
             <span class="badge green">Request</span>
             <h2>
+                <i class="fa fa-calendar-o"></i>
+                <%= @request.event.date.strftime("%e %B %Y") %>
+                <br>
                 <i class="fa fa-clock-o"></i>
                 <%= @request.event.time.strftime("%I:%M %p") %>
                 <br>
