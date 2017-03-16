@@ -6,6 +6,11 @@ def index
   @users= User.all
 end
 
+def history
+  @request = Request.where requestor_id: current_user.id
+  @standin = Request.where standin_id: current_user.id
+  @event = Event.all
+end
 
  def update
    if @user.update(user_params)
