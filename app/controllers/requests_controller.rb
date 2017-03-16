@@ -2,7 +2,7 @@ class RequestsController < ApplicationController
   before_action :set_request, only: [:show, :edit, :update, :destroy]
   before_action :owner? , only: [:edit, :destroy]
   before_action :authenticate_user!, only: [:index, :show, :new, :edit, :create, :update, :destroy]
-  before_action :event_too_late? , only: [:new, :create]
+  before_action :event_too_late? , only: [:new]
   before_action :can_change? , only: [:edit, :update, :destroy]
 
   # GET /requests
@@ -19,7 +19,7 @@ class RequestsController < ApplicationController
   # GET /requests/new
   def new
     @request = Request.new
-    @event = Event.all
+    @event = Event.find(params[:event_id])
   end
 
   # GET /requests/1/edit

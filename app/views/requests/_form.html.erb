@@ -1,7 +1,7 @@
 <div class="card" style="padding: 20px;">
   <div class="card-block">
     <div class=" text-center">
-      <h3><i class=" fa fa-pencil"></i> New Request</h3>
+      <h3><i class=" fa fa-pencil"></i> Request</h3>
     </div>
     <hr class="mt-2 mb-2">
 
@@ -17,10 +17,10 @@
       </ul>
     </div>
   <% end %>
-  <div class="field">
-    <%= f.label :Event_Name, 'Event Name', style:"font-size: 20px" %>
-    <%= f.select :event_id, options_from_collection_for_select(Event.order(:name).all, "id", "name", params[:event_id]|| request.event_id) %>
-  </div>
+
+  <h3>Event Name: <%=@event.name%></h3>
+  <%= f.hidden_field :event_id, :value => @event.id %>
+   
   <div class="field">
     <%= f.label :description, style:"font-size: 20px" %>
     <%= f.text_area :description, style:"font-size: 20px; height:100%" %>
