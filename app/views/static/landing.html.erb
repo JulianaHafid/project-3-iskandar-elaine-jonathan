@@ -15,7 +15,7 @@
 <div class="row">
   <% @request.each do |item| %>
 
-    <% if item.requestor.id == current_user.id && item.status.capitalize != ('Cancelled' || 'Completed')%>
+    <% if item.requestor.id == current_user.id && item.status.capitalize != ('Cancelled' || 'Completed') && Date.today <= item.event.date %>
 
       <div class="col-md-4">
         <div class="panel panel-default">
