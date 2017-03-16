@@ -12,12 +12,15 @@
             <i>"<%= @request.description %>"</i>
         </h4>
 
-        <iframe class="user-map z-depth-1" frameborder="0" style="border:0; width:100%; height:300px" src="https://www.google.com/maps/embed/v1/place?key=AIzaSyByUpVKGIl-ZT0MxU0yJBBIDdL_SIEVrJg&q=<%=@request.event.location%>" allowfullscreen></iframe>
+        <iframe class="user-map z-depth-1" frameborder="0" style="border:0; width:100%; height:300px" src="https://www.google.com/maps/embed/v1/directions?key=AIzaSyByUpVKGIl-ZT0MxU0yJBBIDdL_SIEVrJg&origin=My+Location&destination=<%=@request.event.location%>" allowfullscreen></iframe>
 
         <div class="text-center">
             <br>
             <span class="badge green">Request</span>
             <h2>
+                <i class="fa fa-calendar-o"></i>
+                <%= @request.event.date.strftime("%e %B %Y") %>
+                <br>
                 <i class="fa fa-clock-o"></i>
                 <%= @request.event.time.strftime("%I:%M %p") %>
                 <br>

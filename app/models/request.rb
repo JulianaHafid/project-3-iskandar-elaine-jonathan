@@ -4,4 +4,6 @@ class Request < ApplicationRecord
   belongs_to :event
   belongs_to :requestor, class_name: 'User'
   belongs_to :standin, class_name: 'User', optional: true
+
+
 end
