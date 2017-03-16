@@ -34,9 +34,17 @@ class TransactionsController < ApplicationController
       amount: @transaction.amount_paid.to_s,
       payment_method_nonce: nonce
     )
-
-    flash[:notice] = "Transaction successful! Enjoy!" if result.success?
-    flash[:alert] = "Something is amiss. #{result.transaction.processor_response_text}" unless result.success?
+    if result.success?
+      @transaction.paymentgateway_id = result.transaction.id
+      @transaction.request.status = 'completed'
+      if @transaction.save
+        flash[:notice] = "Transaction is successful!"
+        @transaction.request.status = 'completed'
+        @transaction.request.save
+      end
+    else
+    flash[:alert] = "Something is amiss. #{result.transaction.processor_response_text}"
+    end
     redirect_to transaction_path(result.transaction.id)
   end
 
