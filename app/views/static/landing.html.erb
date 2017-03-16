@@ -16,13 +16,19 @@
     <% if item.requestor.id == current_user.id%>
 
       <div class="col-md-4">
-        <div class="panel panel-default z-depth-5">
-          <div class="panel-heading warning-color text-center"><h4><%=item.description%></h4></div>
+        <div class="panel panel-default">
+          <div class="panel-heading warning-color text-center"><h4>"<%=item.description%>"</h4></div>
           <div class="panel-body text-center">
-            <%= image_tag item.image_url.thumbnail %>
-            <p>Event: <%= item.event.name %></p>
-            <p>Cost: $<%= item.cost %></p>
-            <p>Status: <%=item.status.capitalize!%></p>
+
+            <div class="view overlay hm-zoom hm-white-light">
+              <%= image_tag item.event.image_url, class:"img-fluid", style:"max-width: 100%"%>
+              <div class="mask flex-center">
+                <h1 class="white-text"><%=item.event.name%>, $<%= item.cost %>0</h1>
+              </div>
+            </div>
+
+            <p>Cost: $<%= item.cost %>0
+            <br>Status: <%=item.status.capitalize!%></p>
 
             <%if item.status == 'new' && item.standin_id == nil && item.requestor_id != current_user.id%>
             <%= link_to "Standin for #{item.requestor.name}", request_path(item,"request[standin_id]" => current_user.id,"request[status]"=>'pending'), method: :patch, class: "btn btn-primary"%>
@@ -33,11 +39,21 @@
             <%end%>
 
             <%if item.status == 'pending' && item.standin_id == current_user.id && item.event.date > Date.today%>
-            <%= link_to 'Cancelled Standin',request_path(item, "request[status]"=>'new',"request[standin_id]" => ''), method: :patch, class: "btn btn-primary" %>
+            <%= link_to 'Cancel Standin',request_path(item, "request[status]"=>'new',"request[standin_id]" => ''), method: :patch, class: "btn btn-primary" %>
             <%end%>
+
+            <%if item.status.capitalize == 'Pending' && item.requestor_id == current_user.id%>
+
+            <%= link_to "View", request_path(item.id), class: "btn blue col-sm-4", style: "margin:0" %>
+            <%= link_to "Edit", edit_request_path(item.id), class: "btn warning-color col-sm-4", style: "margin:0" %>
+            <%= link_to "Pay StandIn", new_transaction_path({:request_id=>item.id,:amount_paid=>item.cost}), class: "btn green col-sm-4", style: "margin:0"%>
+
+            <% else %>
 
             <%= link_to "View", request_path(item.id), class: "btn blue col-sm-6", style: "margin:0" %>
             <%= link_to "Edit", edit_request_path(item.id), class: "btn warning-color col-sm-6", style: "margin:0" %>
+
+            <% end %>
 
           </div>
         </div>
@@ -52,7 +68,7 @@
   <% @events.each do |item| %>
     <div class="col-md-4">
       <div class="card">
-        <div class="view overlay hm-zoom">
+        <div class="view overlay hm-zoom hm-white-light">
           <%= image_tag item.image_url, class:"img-fluid", style:"max-width: 100%"%>
           <div class="mask flex-center">
             <h1 class="white-text"><%=item.name%></h1>
@@ -60,9 +76,9 @@
         </div>
 
         <div class="card-block text-center" style="padding:0px">
-          <p>Location: <%=item.location%><br>
-          Date: <%=item.date.strftime("%e %B %Y")%><br>
-          Time: <%=item.time.strftime("%I:%M %P")%><br>
+          <p><%=item.location%><br>
+          <%=item.date.strftime("%e %B %Y")%><br>
+          <%=item.time.strftime("%I:%M %P")%><br>
 
           <%= link_to "View", event_path(item.id), class: "btn blue col-sm-6", style: "margin:0" %>
           <%= link_to "Request", new_request_path({:event_id=>item.id}), class: "btn green col-sm-6", style: "margin:0" %></p>

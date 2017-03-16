@@ -1,61 +1,69 @@
-<h1><%=@request.event.name%></h1>
+<div class="card padding">
 
-<p id="notice"><%= notice %></p>
+    <h1 class="text-center">Request for
+        <%=@request.event.name%>
+    </h1>
 
-<p>
-  <strong>Description:</strong>
-  <%= @request.description %>
-</p>
+    <div class="card-block">
 
-<p>
-  <strong>Event Location:</strong>
-  <%= @request.event.location %>
-</p>
+        <h4 class="text-center">
+            <%= @request.requestor.name %>
+            requested,
+            <i>"<%= @request.description %>"</i>
+        </h4>
 
-<p>
-  <strong>Event Time:</strong>
-  <%= @request.event.time %>
-</p>
+        <iframe class="user-map z-depth-1" frameborder="0" style="border:0; width:100%; height:300px" src="https://www.google.com/maps/embed/v1/place?key=AIzaSyByUpVKGIl-ZT0MxU0yJBBIDdL_SIEVrJg&q=<%=@request.event.location%>" allowfullscreen></iframe>
 
-<p>
-  <strong>Requestor:</strong>
-  <%= @request.requestor.name %>
-</p>
+        <div class="text-center">
+            <br>
+            <span class="badge green">Request</span>
+            <h2>
+                <i class="fa fa-clock-o"></i>
+                <%= @request.event.time.strftime("%I:%M %p") %>
+            <br>
+                <i class="fa fa-money"></i>
+                $<%= @request.cost %>0
+            <br>
+                <%if @request.status.capitalize == 'Cancelled' %>
+                <i class="fa fa-spinner"></i>
+                Status:<br>
+                <span class="badge red"><%= @request.status.capitalize %></span>
+                <%else%>
+                <i class="fa fa-spinner"></i>
+                Status:<br>
+                <span class="badge blue"><%= @request.status.capitalize %></span>
+                <%end%>
+            </h2>
 
-<p>
-  <strong>Standin:</strong>
-  <%if @request.standin_id != nil %>
-  <%=@request.standin.name%>
-  <%else%>
-  <%=@request.standin_id%>
-  <%end%>
-</p>
+            <h4>
+                <i>"<%= @request.delivery_arrangement %>"</i>
+            </h4>
 
+            <p>
+                Standin:
+                <%if @request.standin_id != nil %>
+                <%=@request.standin.name%>
+                <%else%>
+                Yet to be accepted
+                <%end%>
+            </p>
 
-<p>
-  <strong>Cost:</strong>
-  <%= @request.cost %>
-</p>
+        </div>
 
-<p>
-<strong>Request Item Image:</strong>
-<%= image_tag (@request.image_url) %>
-</p>
+        <%if @request.image_url != nil %>
+        <%= image_tag (@request.image_url) %>
+        <%else%>
 
-<p>
-<strong>Delivery Arrangement:</strong>
-<%= @request.delivery_arrangement %>
-</p>
+        <%end%>
 
-<p>
-<strong>Request Status:</strong>
-<%= @request.status %>
-</p>
+        <%if current_user%>
+        <%= link_to 'Edit', edit_request_path(@request), class:"btn warning-color" %>
+        <%= link_to 'Back', requests_path, class:"btn primary-color" %>
+        <%if @request.status != "cancelled"%>
+        <%=link_to "Cancel Standin", request_path(@request, "request[status]"=>"cancelled"), method: :patch, class:"btn danger-color"%>
+        <%end%>
+        <%end%>
 
-<%if current_user%>
-<%= link_to 'Edit', edit_request_path(@request) %> |
-<%= link_to 'Back', requests_path %>
-<%if @request.status != "cancelled"%>
-|<%=link_to "Cancel", request_path(@request, "request[status]"=>"cancelled"), method: :patch%>
-<%end%>
-<%end%>
+    </div>
+
+</div>
