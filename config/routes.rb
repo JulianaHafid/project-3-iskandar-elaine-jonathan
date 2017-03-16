@@ -18,6 +18,7 @@ Rails.application.routes.draw do
 
   # resources :charges
   resources :transactions
+  get 'transactions/:id/showTrans' => "transactions#showTrans"
 
   root 'static#homepage'
 end

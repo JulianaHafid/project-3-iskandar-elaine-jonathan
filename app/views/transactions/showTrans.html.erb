@@ -1,8 +1,69 @@
 <h1>Transaction Details</h1>
 
 <h2>Payment Made:</h2>
-<% @payout.each do |item| %>
-<div class="row">
-<pre><%=item%></pre>
-</div>
-<%end%>
+<table class="table">
+  <thead class="thead-inverse">
+    <tr>
+      <th>#</th>
+      <th>Transaction Date</th>
+      <th>Transaction Time</th>
+      <th>Transaction Id</th>
+      <th>Amount Paid</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @total_payout=0
+    @payout.each do |item| %>
+    <tr>
+      <td><%=@payout.index(item)+1%></td>
+      <td><%=item.created_at.strftime("%e %B %Y")%></td>
+      <td><%=item.created_at.strftime("%I:%M %p")%></td>
+      <td><%=item.paymentgateway_id%></td>
+      <td>$<%='%.2f' % item.amount_paid%></td>
+      <% @total_payout += item.amount_paid%>
+    </tr>
+    <%end%>
+    <tr>
+                <td colspan="3"></td>
+                <td>
+                    <h4><strong>Total Amount Paid</strong></h4></td>
+                <td>
+                    <h4><strong>$<%='%.2f' % @total_payout%></strong></h4></td>
+  </tr>
+  </tbody>
+</table>
+
+
+
+<h2>Payment Received:</h2>
+<table class="table">
+  <thead class="thead-inverse">
+    <tr>
+      <th>#</th>
+      <th>Transaction Date</th>
+      <th>Transaction Time</th>
+      <th>Transaction Id</th>
+      <th>Amount Received</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @total_received=0
+    @income.each do |item| %>
+    <tr>
+      <td><%=@income.index(item)+1%></td>
+      <td><%=item.created_at.strftime("%e %B %Y")%></td>
+      <td><%=item.created_at.strftime("%I:%M %p")%></td>
+      <td><%=item.paymentgateway_id%></td>
+      <td>$<%='%.2f' % item.amount_paid%></td>
+      <% @total_received += item.amount_paid%>
+    </tr>
+    <%end%>
+    <tr>
+                <td colspan="3"></td>
+                <td>
+                    <h4><strong>Total Amount Received</strong></h4></td>
+                <td>
+                    <h4><strong>$<%='%.2f' % @total_received%></strong></h4></td>
+  </tr>
+  </tbody>
+</table>

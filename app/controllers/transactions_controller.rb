@@ -24,6 +24,15 @@ class TransactionsController < ApplicationController
     @result = _create_result_hash(@braintree_transaction)
   end
 
+  def showTrans
+      @payout = Transaction.new
+      @payout= Transaction.where request_id:(Request.where(requestor_id:params[:id], status:'completed'))
+      p @payout
+      @income =  Transaction.new
+      @income = Transaction.where request_id:(Request.where(standin_id:params[:id], status:'completed'))
+      p @income
+  end
+
   def create
     @transaction = Transaction.new
     @transaction.request_id = params[:request_id]
