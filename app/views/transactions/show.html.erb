@@ -23,8 +23,7 @@
       <% end %>
 
       <section>
-        <a href="#" class="btn btn-primary">Go Back to Payment List</a>
-        <a href="https://sandbox.braintreegateway.com/login" class="btn btn-danger">Edit Transaction via Merchant Account</a>
+        <a href="/transactions/showTrans" class="btn primary">View all transactions</a>
       </section>
 
       <br><br>
@@ -34,7 +33,7 @@
           Transaction Amount: $<%= @braintree_transaction.amount %>
         </p>
         <p>
-          Transaction Status: <%= @braintree_transaction.status %>
+          Transaction Status: <%= @braintree_transaction.status.capitalize %>
         </p>
         <p>
           Time of Transaction: <%= @braintree_transaction.created_at %>
