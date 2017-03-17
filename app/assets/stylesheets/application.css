@@ -64,6 +64,15 @@ p {
   font-size: 55px;
   color: orange;
 }
+
+.box {
+  height: 100px;
+}
+
+.boxcard {
+  height: 320px;
+}
+
 #transaction-success {
    text-align: center;
    font-family: 'Courier New';

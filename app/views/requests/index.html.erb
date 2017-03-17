@@ -35,8 +35,8 @@
           <br>Status:
           <%=item.status.capitalize!%></p>
 
-          <%= link_to "View", request_path(item.id), class: "btn blue col-sm-4", style: "margin:0" %>
-          <%= link_to "Standin for #{item.requestor.name}", request_path(item,"request[standin_id]" => current_user.id,"request[status]"=>'pending'), method: :patch, class: "btn green col-sm-8", style: "margin:0"%>
+          <%= link_to "View", request_path(item.id), class: "btn blue col-sm-3", style: "margin:0; font-size: 13px"%>
+          <%= link_to "Standin for #{item.requestor.name}", request_path(item,"request[standin_id]" => current_user.id,"request[status]"=>'pending'), method: :patch, class: "btn green col-sm-9", style: "margin:0; font-size:13px" %>
 
         </div>
       </div>
