@@ -1,4 +1,4 @@
-<%= form_tag transactions_path, method: "post" do %>
+<%= form_tag transactions_path, method: "post", id: "payment-form" do %>
   <div id="dropin"></div>
   <%= hidden_field_tag :request_id, params[:request_id] %>
   <%= hidden_field_tag :amount_paid, params[:amount_paid] %>
@@ -7,10 +7,17 @@
 
 <script src="https://js.braintreegateway.com/js/braintree-2.27.0.min.js"></script>
 <script type="text/javascript">
+
   $(document).on('turbolinks:load', setupBT);
+
   function setupBT() {
+    var checkout = new Demo({
+      formID: 'payment-form'
+    })
+
     braintree.setup("<%=@client_token%>", 'dropin', {
       container: 'dropin'
     });
   }
+  
 </script>
