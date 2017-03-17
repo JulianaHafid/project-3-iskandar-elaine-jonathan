@@ -30,10 +30,16 @@
               </div>
             </div>
 
-            <p> Requestor: <%= item.requestor.name %>
+            <p>
             <br>Event: <%=item.event.name%>
+            <br>When: <%=item.event.date.strftime("%e %B %Y")%>, <%=item.event.time.strftime("%I:%M %p")%>
             <br>Cost: $<%= item.cost %>0
-            <br>Status: <%=item.status.capitalize!%></p>
+            <br>Standin:
+            <%if item.standin_id != nil %>
+            <%=item.standin.name%>
+            <%else%>
+            Yet to be accepted
+            <%end%></p>
 
             <!-- 1: New Requests -->
             <% puts item.status %>
@@ -104,8 +110,9 @@
 
             <p> Requestor: <%= item.requestor.name %>
             <br>Event: <%=item.event.name%>
+            <br>When: <%=item.event.date.strftime("%e %B %Y")%>, <%=item.event.time.strftime("%I:%M %p")%>
             <br>Cost: $<%= item.cost %>0
-            <br>Status: <%=item.status.capitalize!%></p>
+            <br>Status: <%= item.status.capitalize %></p>
 
             <!-- 1: Cancelled Standins -->
             <% if item.status.capitalize == ('Cancelled' || 'Event cancelled') %>

@@ -9,7 +9,9 @@ end
 
 def history
   @request = Request.where requestor_id: current_user.id
+  @request.order(created_at: :asc)
   @standin = Request.where standin_id: current_user.id
+  @standin.order(created_at: :asc)
   @event = Event.all
 end
 
