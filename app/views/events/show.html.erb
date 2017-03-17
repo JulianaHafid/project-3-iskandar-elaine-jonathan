@@ -35,3 +35,49 @@
     </div>
 
 </div>
+
+<h2>Requests for this event</h2>
+
+<% @requests.each do |item| %>
+<% if item.requestor_id != current_user.id && item.status.capitalize == 'New'%>
+
+<div class="col-md-4">
+  <div class="panel panel-default">
+    <div class="panel-heading warning-color text-center">
+      <h4>"<%=item.description%>"</h4>
+    </div>
+    <div class="panel-body text-center">
+
+      <div class="view overlay hm-zoom hm-black-light">
+        <iframe
+        class="user-map z-depth-1"
+        frameborder="0"
+        style="border:0; width:100%; height:300px"
+        src="https://www.google.com/maps/embed/v1/directions?key=AIzaSyByUpVKGIl-ZT0MxU0yJBBIDdL_SIEVrJg&origin=My+Location&destination=<%=item.event.location%>"
+        allowfullscreen></iframe>
+        <div class="mask flex-center">
+          <h1 class="white-text"><%=item.event.name%>, $<%= item.cost %>0</h1>
+        </div>
+      </div>
+
+      <p>
+        Requestor:
+        <%= item.requestor.name %>
+        <br>Event:
+        <%= item.event.name %>
+        <br>Date: <%= item.event.date.strftime("%e %B %Y") %>
+        <br>Cost: $<%= item.cost %>0
+        <br>Status:
+        <%=item.status.capitalize!%></p>
+
+        <%= link_to "View", request_path(item.id), class: "btn blue col-sm-4", style: "margin:0" %>
+        <%= link_to "Standin for #{item.requestor.name}", request_path(item,"request[standin_id]" => current_user.id,"request[status]"=>'pending'), method: :patch, class: "btn green col-sm-8", style: "margin:0"%>
+
+      </div>
+    </div>
+  </div>
+
+<% end %>
+<%end%>
+
+</div>

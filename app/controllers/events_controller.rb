@@ -30,6 +30,8 @@ class EventsController < ApplicationController
   end
 
   def show
+    @requests = Request.where event_id: params[:id]
+    p params[:id]
     respond_to do |format|
   format.html
   format.json { render json: @event }
