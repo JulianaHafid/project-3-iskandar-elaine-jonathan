@@ -4,6 +4,8 @@
   <%= hidden_field_tag :amount_paid, params[:amount_paid] %>
   <input type="submit" class="btn btn-primary" value="Pay <%=params[:amount_paid]%>">
 <% end %>
+
+<script src="https://js.braintreegateway.com/js/braintree-2.27.0.min.js"></script>
 <script type="text/javascript">
   $(document).on('turbolinks:load', setupBT);
   function setupBT() {
