@@ -59,14 +59,27 @@
 
         <%end%>
 
-        <%if current_user%>
+        <%if current_user.id == @request.requestor_id%>
 
         <% if @request.status == "request cancelled" || @request.status == "completed" || @request.status == "event cancelled" || @request.status == "cancelled"%>
           <%= link_to 'Back', requests_path, class:"btn primary-color" %>
         <% else %>
           <%= link_to 'Edit', edit_request_path(@request), class:"btn warning-color" %>
           <%= link_to 'Back', landing_path, class:"btn primary-color" %>
-          <%=link_to "Cancel Standin", request_path(@request, "request[status]"=>"cancelled"), method: :patch, class:"btn danger-color"%>
+          <%= link_to "Pay StandIn", new_transaction_path({:request_id=>@request.id,:amount_paid=>@request.cost}), class: "btn green"%>
+          <%=link_to "Cancel Request", request_path(@request, "request[status]"=>"cancelled"), method: :patch, class:"btn danger-color"%>
+        <% end %>
+
+        <%end%>
+
+        <%if current_user.id == @request.standin_id%>
+
+        <% if @request.status == "request cancelled" || @request.status == "completed" || @request.status == "event cancelled" || @request.status == "cancelled"%>
+          <%= link_to 'Back', requests_path, class:"btn primary-color" %>
+        <% else %>
+          <%= link_to 'Edit', edit_request_path(@request), class:"btn warning-color" %>
+          <%= link_to 'Back', landing_path, class:"btn primary-color" %>
+          <%=link_to "Cancel Standin", request_path(@request, "request[status]"=>"new"), method: :patch, class:"btn danger-color"%>
         <% end %>
 
         <%end%>
