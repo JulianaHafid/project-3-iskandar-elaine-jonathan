@@ -2,16 +2,18 @@
 <div class="row">
 
     <% @events.each do |item| %>
-    <div class="col-md-4">
+    <div class="col-md-4 boxcard">
         <div class="card" style="display: inline-block; margin: 5px">
             <div class="view overlay hm-zoom hm-white-light">
                 <%= image_tag item.image_url, class:"img-fluid", style:"max-width: 100%"%>
+                <a href="events/<%=item.id%>">
                 <div class="mask flex-center">
                     <h1 class="white-text"><%=item.name%></h1>
                 </div>
+                </a>
             </div>
 
-            <div class="card-block text-center" style="padding:0px">
+            <div class="card-block box text-center" style="padding:0px">
                 <p><%=item.location%><br>
                     <%=item.date.strftime("%e %B %Y")%><br>
                     <%=item.time.strftime("%I:%M %P")%><br>
