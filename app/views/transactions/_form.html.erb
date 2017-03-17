@@ -10,14 +10,25 @@
 
   // $(document).on('turbolinks:load', setupBT);
 
-  function setupBT() {
+  // function setupBT() {
+  //   var checkout = new Demo({
+  //     formID: 'payment-form'
+  //   })
+  //
+  //   braintree.setup("<%=@client_token%>", 'dropin', {
+  //     container: 'dropin'
+  //   });
+  // }
+
+  (function () {
     var checkout = new Demo({
       formID: 'payment-form'
-    })
-
-    braintree.setup("<%=@client_token%>", 'dropin', {
-      container: 'dropin'
     });
-  }
+
+    var client_token = "<%= @client_token %>";
+    braintree.setup(client_token, "dropin", {
+      container: "dropin"
+    });
+  })()
 
 </script>
