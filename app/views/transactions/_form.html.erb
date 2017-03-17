@@ -21,9 +21,6 @@
   // }
 
   (function () {
-    var checkout = new Demo({
-      formID: 'payment-form'
-    });
 
     var client_token = "<%= @client_token %>";
     braintree.setup(client_token, "dropin", {
