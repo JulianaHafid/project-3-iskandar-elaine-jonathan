@@ -7,7 +7,9 @@ class StaticController < ApplicationController
 
   def landing
     @events = Event.all
+    @events.order(date: :asc)
     @request = Request.all
+    @request.order(created_at: :asc)
   end
 
 end
