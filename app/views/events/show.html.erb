@@ -37,6 +37,8 @@
 </div>
 
 <h2>Requests for this event</h2>
+<div class="row">
+
 
 <% @requests.each do |item| %>
 <% if item.requestor_id != current_user.id && item.status.capitalize == 'New'%>
@@ -80,4 +82,5 @@
 <% end %>
 <%end%>
 
+</div>
 </div>
