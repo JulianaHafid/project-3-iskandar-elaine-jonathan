@@ -65,7 +65,7 @@
           <%= link_to 'Back', requests_path, class:"btn primary-color" %>
         <% else %>
           <%= link_to 'Edit', edit_request_path(@request), class:"btn warning-color" %>
-          <%= link_to 'Back', requests_path, class:"btn primary-color" %>
+          <%= link_to 'Back', landing_path, class:"btn primary-color" %>
           <%=link_to "Cancel Standin", request_path(@request, "request[status]"=>"cancelled"), method: :patch, class:"btn danger-color"%>
         <% end %>
 

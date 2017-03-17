@@ -2,7 +2,7 @@
   <div id="dropin"></div>
   <%= hidden_field_tag :request_id, params[:request_id] %>
   <%= hidden_field_tag :amount_paid, params[:amount_paid] %>
-  <input type="submit" class="btn btn-primary" value="Pay <%=params[:amount_paid]%>">
+  <input type="submit" class="btn success-color" value="Pay $<%=params[:amount_paid]%>0">
 <% end %>
 
 <script src="https://js.braintreegateway.com/js/braintree-2.27.0.min.js"></script>

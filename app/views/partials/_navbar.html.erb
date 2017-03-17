@@ -14,25 +14,25 @@
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav navbar-left">
-        <li><a class="white-text" href="/landing">Home</a></li>
-        <li><a class="white-text" href="/events">Events</a></li>
-        <li><a class="white-text" href="/requests">Requests</a></li>
+        <li><a class="white-text" href="/landing" style="font-size:16px; font-weight:500">Home</a></li>
+        <li><a class="white-text" href="/events" style="font-size:16px; font-weight:500">Events</a></li>
+        <li><a class="white-text" href="/requests" style="font-size:16px; font-weight:500">Requests</a></li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
         <% if user_signed_in? %>
         <li class="dropdown">
-       <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><%=current_user.name%><span class="caret"></span></a>
-       <ul class="dropdown-menu">
-         <li><%= link_to 'Edit Profile', edit_user_registration_path %></li>
-         <li><%= link_to 'Request History', user_history_path %></li>
-         <li><%= link_to "My Past Transactions", showTrans_path(current_user.id)%>
+       <a href="#" class="dropdown-toggle white-text" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" style="font-size:16px; font-weight:500"><%=current_user.name%><span class="caret"></span></a>
+       <ul class="dropdown-menu orange">
+         <li><%= link_to 'Edit Profile', edit_user_registration_path, style:"font-size:14px; font-weight:500" %></li>
+         <li><%= link_to 'Request History', user_history_path, style:"font-size:14px; font-weight:500" %></li>
+         <li><%= link_to "My Past Transactions", showTrans_path(current_user.id), style:"font-size:14px; font-weight:500"%>
          </li>
        </ul>
       </li>
-          <li><%= link_to "Log Out", destroy_user_session_path, method: :delete, class:"white-text" %></li>
+          <li><%= link_to "Log Out", destroy_user_session_path, method: :delete, class:"white-text", style:"font-size:16px; font-weight:500" %></li>
         <% else %>
-          <li><%= link_to "Log In", new_user_session_path, class:"white-text" %></li>
-          <li><%= link_to "Register New User", new_user_registration_path, class:"white-text" %></li>
+          <li><%= link_to "Log In", new_user_session_path, class:"white-text", style:"font-size:16px; font-weight:500" %></li>
+          <li><%= link_to "Register New User", new_user_registration_path, class:"white-text", style:"font-size:16px; font-weight:500" %></li>
         <% end %>
       </ul>
     </div><!-- /.navbar-collapse -->
